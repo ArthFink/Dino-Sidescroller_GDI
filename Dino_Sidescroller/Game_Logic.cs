@@ -6,14 +6,18 @@ using System.Text;
 namespace Dino_Sidescroller
 {
     public class Game_Logic
-    {
+    {   
+        
+        //Score
         public int Score()
         {
             throw new System.NotImplementedException();
         }
+
+
         //Timmer
 
-        //Score
+        
 
 
 

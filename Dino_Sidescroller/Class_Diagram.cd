@@ -3,22 +3,22 @@
   <Class Name="Dino_Sidescroller.Charakter">
     <Position X="1" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAIAAIAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAgQAAAIAgAAAAAAAAAAAIAAAACAAAAAAAAAAAAAEAA=</HashCode>
       <FileName>Charakter.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dino_Sidescroller.Obstacles">
     <Position X="3" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAQAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <HashCode>AAAQIAAAAAAAAAAAQAAAAMAAAACAAAAAAAAAAAAAECA=</HashCode>
       <FileName>Obstacles.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dino_Sidescroller.Graphics">
+  <Class Name="Dino_Sidescroller.Graphics_Paint">
     <Position X="5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAABAAAAAA=</HashCode>
-      <FileName>Graphics.cs</FileName>
+      <HashCode>AAEAAAAAAAAAAAAAAAAAAAEEAAAAAAAAAAAABAAAAAA=</HashCode>
+      <FileName>Graphics_Paint.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Dino_Sidescroller.User_Input">
@@ -35,11 +35,11 @@
       <FileName>Game_Logic.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Dino_Sidescroller.Rectangle">
-    <Position X="2.25" Y="3.25" Width="1.5" />
+  <Class Name="Dino_Sidescroller.Rectangles">
+    <Position X="3" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Rectangle.cs</FileName>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Rectangles.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
