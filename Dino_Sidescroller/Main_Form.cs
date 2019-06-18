@@ -15,18 +15,21 @@ namespace Dino_Sidescroller
         Timer timer;
         int frameCount = 1;
         Graphics_Paint graphics_Paint;
-
+        Game_Logic game_Logic;
 
         public Main_Form()
         {
             InitializeComponent();
+            DoubleBuffered = true;
+
+            game_Logic = new Game_Logic(ClientSize);
+            graphics_Paint = new Graphics_Paint(game_Logic);
+
             timer = new Timer();
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Interval = 30;
-            graphics_Paint = new Graphics_Paint();
-            DoubleBuffered = true;
-            timer.Start();
-
+            timer.Start();     
+                                 
             KeyDown += new KeyEventHandler(Key_Press);
         }
 
@@ -38,10 +41,13 @@ namespace Dino_Sidescroller
             Graphics graphics = e.Graphics;
 
 
-            //  graphics_Paint.Paint_Environment(graphics, ClientSize);
-            // graphics_Paint.Paint_Character(graphics, ClientSize);
-            // graphics_Paint.Paint_Obstacles(graphics, ClientSize,frameCount); 
-            graphics_Paint.Paint_Übung(graphics, ClientSize);
+            graphics_Paint.Paint_Environment(graphics, ClientSize);
+
+            graphics_Paint.Paint_Character(graphics, ClientSize);
+
+            graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
+
+            //graphics_Paint.Paint_Übung(graphics, ClientSize);
         }
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
@@ -63,12 +69,12 @@ namespace Dino_Sidescroller
 
             if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
             {
-                Charakter charakter = new Charakter();
-                charakter.KeyPresed = true;
+
+                game_Logic.Charakter.Jump();
             }
 
         }
 
-  
+
     }
 }

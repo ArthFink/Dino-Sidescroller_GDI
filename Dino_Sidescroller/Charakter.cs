@@ -10,22 +10,33 @@ namespace Dino_Sidescroller
 {
     public class Charakter
     {
-        public Charakter()
+ 
+
+        public Charakter(SizeF clinetSize)
         {
+            rect = new Rectangle(15, Convert.ToInt32(clinetSize.Height/3)*2-10, 10, 10);
 
         }
 
-        private bool keyPresed;
+        #region Propaties
 
-        public bool KeyPresed
+        private bool keyPresedUp;
+
+        public bool KeyPresedUp
         {
-            get { return keyPresed; }
-            set { keyPresed = value; }
+            get { return keyPresedUp; }
+            set { keyPresedUp = value; }
         }
+        private Rectangle rect;
 
+        public Rectangle Rect
+        {
+            get { return rect; }
+            set { rect = value; }
+        }
 
         private int possition_x;
-                
+
         public int Possition_x
         {
             get { return Possition_x; }
@@ -50,26 +61,17 @@ namespace Dino_Sidescroller
             get { return gravati; }
             set { gravati = value; }
         }
-
+        #endregion
 
         //Wenn the user is Pressing a Key the Charakter Jumps Up
-        public int Jump()
+        public void Jump()
         {
-            if (keyPresed = true)
-            {
-                MessageBox.Show(keyPresed.ToString());
-            }
             
+            rect.Y += -10;
+            keyPresedUp = false;
+            System.Threading.Thread.Sleep(500);
 
-            return possition_y;       
-        }
-
-        public Rectangle GenerateCharacter(SizeF size)
-        {
-            int h = 50;
-
-            Rectangle rect = new Rectangle(15,Convert.ToInt32( 2 * (size.Height / 3)-h + possition_y), 20, h);
-            return rect;
+            rect.Y += 10;
         }
 
     }

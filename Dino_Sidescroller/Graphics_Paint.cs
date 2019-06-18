@@ -9,13 +9,14 @@ namespace Dino_Sidescroller
 {
     public class Graphics_Paint
     {
-        Rectangles rectangles = new Rectangles();
-        Charakter charakter = new Charakter();
+        Rectangles rectangles;
+        Charakter charakter ;
         float a;
 
-        public Graphics_Paint()
+        public Graphics_Paint(Game_Logic game_Logic)
         {
-
+            charakter = game_Logic.Charakter;
+            rectangles = new Rectangles();
             a = 0f;
         }
         /// <summary>
@@ -23,7 +24,7 @@ namespace Dino_Sidescroller
         /// </summary>
         public void Paint_Character(Graphics g, SizeF size)
         {
-            g.FillRectangle(Brushes.Brown, charakter.GenerateCharacter(size));
+            g.FillRectangle(Brushes.Brown, charakter.Rect);
         }
 
         /// <summary>
@@ -40,7 +41,7 @@ namespace Dino_Sidescroller
             g.FillRectangle(Brushes.Black, 0, 2 * (size.Height / 3), size.Width, 5);
         }
 
-        public void Paint_Übung(Graphics g, SizeF size)
+      /*  public void Paint_Übung(Graphics g, SizeF size)
         {
             float r = 100;
             float w = 10;           
@@ -50,6 +51,6 @@ namespace Dino_Sidescroller
 
             a++;
 
-        }
+        }*/
     }
 }
