@@ -40,6 +40,11 @@ namespace Dino_Sidescroller
             throw new System.NotImplementedException();
         }
 
+        public void CharFall()
+        {
+            charakter.Fall();
+        }
+
 
 
 

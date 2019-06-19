@@ -52,13 +52,13 @@ namespace Dino_Sidescroller
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
+            //the timer starts and increments the counter.
             frameCount += 1;
 
+            game_Logic.Charakter.Jump();
 
-            game_Logic.Charakter.Fall();
-            //the timer starts and increments the counter.
+            game_Logic.CharFall();
 
-            //Refresh();
             Invalidate();
 
         }
@@ -68,11 +68,15 @@ namespace Dino_Sidescroller
         /// </summary>
         private void Key_Press(object sender, KeyEventArgs e)
         {
-
-            if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
+            if (game_Logic.Charakter.Rect.Y == game_Logic.Charakter.BaseHight)
             {
-                game_Logic.Charakter.Jump();
+                if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
+                {
+                    game_Logic.Charakter.KeyPresedUp = true;
+                }
             }
+
+
         }
 
 

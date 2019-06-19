@@ -12,14 +12,27 @@ namespace Dino_Sidescroller
     {
 
         SizeF cSize;
+      
 
         public Charakter(SizeF clinetSize)
         {
-            rect = new Rectangle(15, Convert.ToInt32(clinetSize.Height / 3) * 2 - 10, 10, 10);
+            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
+            rect = new Rectangle(15, baseHight, 10, 10);
             cSize = clinetSize;
+            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
         }
 
         #region Propaties
+
+
+        private int baseHight;
+
+        public int BaseHight
+        {
+            get { return baseHight;; }
+            set { baseHight = value; }
+        }
+
 
         private bool keyPresedUp;
 
@@ -67,18 +80,20 @@ namespace Dino_Sidescroller
         //Wenn the user is Pressing a Key the Charakter Jumps Up
         public void Jump()
         {
-
-            rect.Y += -10;
-            keyPresedUp = false;
+            if (keyPresedUp)
+            {
+                rect.Y += -100;
+                keyPresedUp = false;
+            }
 
         }
 
         //After Jump() the Cahrakter has to fall back to the base Line
         public void Fall()
         {
-            if (rect.Y < Convert.ToInt32(cSize.Height / 3) * 2 - 10)
+            if (rect.Y < baseHight)
             {
-                rect.Y += 1;
+                rect.Y += 2;
             }
         }
     }
