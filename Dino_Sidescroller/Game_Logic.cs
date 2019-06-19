@@ -13,12 +13,10 @@ namespace Dino_Sidescroller
 
         public Game_Logic(SizeF clinetSize)
         {
-
             charakter = new Charakter(clinetSize);
-            //charakter.Rect.Y = 1;
         }
 
-
+        #region Properties
 
         private RectangleF obstacles;
 
@@ -34,7 +32,7 @@ namespace Dino_Sidescroller
             get { return charakter; }
             set { charakter = value; }
         }
-
+        #endregion
 
         //Score
         public int Score()

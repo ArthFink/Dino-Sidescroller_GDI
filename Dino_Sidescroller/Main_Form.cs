@@ -28,8 +28,8 @@ namespace Dino_Sidescroller
             timer = new Timer();
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Interval = 30;
-            timer.Start();     
-                                 
+            timer.Start();
+
             KeyDown += new KeyEventHandler(Key_Press);
         }
 
@@ -54,9 +54,11 @@ namespace Dino_Sidescroller
         {
             frameCount += 1;
 
+
+            game_Logic.Charakter.Fall();
             //the timer starts and increments the counter.
 
-            Refresh();
+            //Refresh();
             Invalidate();
 
         }
@@ -69,10 +71,8 @@ namespace Dino_Sidescroller
 
             if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
             {
-
                 game_Logic.Charakter.Jump();
             }
-
         }
 
 
