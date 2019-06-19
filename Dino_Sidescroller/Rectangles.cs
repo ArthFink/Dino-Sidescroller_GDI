@@ -8,42 +8,75 @@ namespace Dino_Sidescroller
 {
     public class Rectangles : Obstacles
     {
-        public Rectangles()
-        {
+        int baseHight;
+        RectangleF singeOblstacles;
+        RectangleF doubellObstacles;
 
+        Random generator;
+        int rand;
+
+        public Rectangles(SizeF cSize)
+        {
+            rectanglesFs = new RectangleF[50];
+            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
+
+            singeOblstacles = new RectangleF(cSize.Width - 30, baseHight - 30, 10, 40);
+            doubellObstacles = new RectangleF(cSize.Width - 30, baseHight - 10, 10, 20);
+
+            generator = new Random(500);
+
+            rectanglesFs[1] = new RectangleF(cSize.Width - 30, baseHight - 30, 10, 40);
+
+            GenerateObstacelsArry();
         }
 
-        public RectangleF[] GenerateObstacels(SizeF size, int frameCount)
+        public void MoveObstecals()
         {
-            RectangleF[] rectangleFs = new RectangleF[50];
-
-            // Obstacles Singelobstacles = new Obstacles(40,40,40,40);
-            // Obstacles doubellObstacles = new Obstacles(60, 40, 80, 40);
-            int h = 10;
-            int w = 10;      
-
-            Random generator = new Random(500);
-            int rand = generator.Next();
-
-            /*Rectangle rectangle = new Rectangle(Convert.ToInt32(size.Width - f)*(frameCount +1), Convert.ToInt32(size.Height / 3 + 100 ), h, w);*/
-
-            for (int i = 0; i < rectangleFs.Length; i++)
+          /*  for (int i = 0; i < rectanglesFs.Length; i++)
             {
-                Rectangle singeOblstacles = new Rectangle(40 + 10*i, 40, w, h);
-                Rectangle doubellObstacles = new Rectangle(50 , 40, w, h * 2);
+                if (rectanglesFs[i].X > cSize.Width - 10 )
+                {
+                    rectanglesFs[i].X += 10;
+                }
+            }*/
+  
+            if (rectanglesFs[1].X > cSize.Width - 10)
+            {
+                rectanglesFs[1].X += -4;
+            }
+        }
+        public void GenerateObstacelsArry()
+        {
+
+            rand = generator.Next();
+
+           for (int i = 0; i < rectanglesFs.Length; i++)
+            {
 
                 if (rand % 2 == 0)
                 {
-                    rectangleFs[i] = singeOblstacles;
+                    singeOblstacles.X = singeOblstacles.X - (2 * i);
+                    rectanglesFs[i] = singeOblstacles;
                 }
                 else
                 {
-                    rectangleFs[i]  = doubellObstacles;
+                    rectanglesFs[i] = doubellObstacles;
                 }
             }
 
 
-            return rectangleFs;
+
         }
+        #region Properties
+        private RectangleF[] rectanglesFs;
+
+        public RectangleF[] RectangleFs
+        {
+            get { return rectanglesFs; }
+            set { rectanglesFs = value; }
+        }
+
+        public SizeF cSize { get; set; }
+        #endregion
     }
 }

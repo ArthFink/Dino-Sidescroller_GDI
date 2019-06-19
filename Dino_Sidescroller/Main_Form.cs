@@ -31,6 +31,9 @@ namespace Dino_Sidescroller
             timer.Start();
 
             KeyDown += new KeyEventHandler(Key_Press);
+
+
+        
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -54,6 +57,8 @@ namespace Dino_Sidescroller
         {
             //the timer starts and increments the counter.
             frameCount += 1;
+
+            game_Logic.ObstacelsMove();
 
             game_Logic.Charakter.Jump();
 
