@@ -15,6 +15,7 @@ namespace Dino_Sidescroller
         public Game_Logic(SizeF clinetSize)
         {
             charakter = new Charakter(clinetSize);
+            //charakter.CharakterReset();
             rectangles = new Rectangles(clinetSize);
         }
 

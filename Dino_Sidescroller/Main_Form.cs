@@ -29,11 +29,9 @@ namespace Dino_Sidescroller
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Interval = 30;
             timer.Start();
+            KeyUp += key_Up;
 
-            KeyDown += new KeyEventHandler(Key_Press);
-
-
-        
+            KeyDown += new KeyEventHandler(Key_Press);        
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -82,6 +80,14 @@ namespace Dino_Sidescroller
             }
 
 
+        }
+
+        private void key_Up (object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
+            {
+                game_Logic.Charakter.KeyPresedUp = false;
+            }
         }
 
 
