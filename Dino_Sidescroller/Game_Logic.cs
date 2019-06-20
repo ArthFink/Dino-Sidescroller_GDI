@@ -57,7 +57,7 @@ namespace Dino_Sidescroller
             charakter.Fall();
         }
 
-        public void rectangelsGenarate()
+        public void RectangelsGenarate()
         {
             rectangles.GenerateObstacelsArry();
         }

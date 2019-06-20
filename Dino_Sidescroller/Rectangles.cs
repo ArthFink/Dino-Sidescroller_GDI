@@ -41,15 +41,15 @@ namespace Dino_Sidescroller
 
             for (int i = 0; i < rectanglesFs.Length; i++)
             {
-                double rand = generator.NextDouble();
+                int rand = generator.Next(10);
 
                 if (rand  % 2 == 0)
                 {
-                    rectanglesFs[i] = new RectangleF(cSize.Width + i * 30, baseHight - 30, 10, 40);
+                    rectanglesFs[i] = new RectangleF(cSize.Width + i * 30 * (int)(Math.Pow(rand,2)), baseHight - 30, 10, 40);
                 }
                 else if (rand % 2 != 0)
                 {
-                    rectanglesFs[i] = new RectangleF(cSize.Width + i * 30, baseHight - 10, 10, 20);
+                    rectanglesFs[i] = new RectangleF(cSize.Width + i * 30* (int)(Math.Pow(rand, 2)), baseHight - 10, 10, 20);
                 }
             }
 
