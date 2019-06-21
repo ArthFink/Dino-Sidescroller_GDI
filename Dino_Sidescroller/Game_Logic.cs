@@ -9,11 +9,14 @@ namespace Dino_Sidescroller
 {
     public class Game_Logic
     {
-        Charakter charakter;
+        private Charakter charakter;
+        private Rectangles rectangles;
 
         public Game_Logic(SizeF clinetSize)
         {
             charakter = new Charakter(clinetSize);
+            //charakter.CharakterReset();
+            rectangles = new Rectangles(clinetSize);
         }
 
         #region Properties
@@ -32,6 +35,15 @@ namespace Dino_Sidescroller
             get { return charakter; }
             set { charakter = value; }
         }
+
+
+
+        public Rectangles Rectangles
+        {
+            get { return rectangles; }
+            set { rectangles = value; }
+        }
+
         #endregion
 
         //Score
@@ -45,6 +57,14 @@ namespace Dino_Sidescroller
             charakter.Fall();
         }
 
+        public void RectangelsGenarate()
+        {
+            rectangles.GenerateObstacelsArry();
+        }
+        public void ObstacelsMove()
+        {
+            rectangles.MoveObstecals();
+        }
 
 
 

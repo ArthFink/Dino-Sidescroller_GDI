@@ -3,47 +3,117 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Windows.Forms;
 
 namespace Dino_Sidescroller
 {
     public class Rectangles : Obstacles
     {
-        public Rectangles()
+        int baseHight;       
+
+        public Rectangles(SizeF cSize)
         {
+            rectanglesFs = new RectangleF[150];
+            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
+
+            GenerateObstacelsArry();
+        }
+
+        public void MoveObstecals()
+        {
+            Random generator = new Random();
+
+            float lastHighes = 0;
+
+
+
+            for (int i = 0; i < rectanglesFs.Length; i++)
+            {
+
+                if (lastHighes < rectanglesFs[i].X)
+                {
+                    lastHighes = rectanglesFs[i].X;
+                }
+
+            }
+
+            for (int i = 0; i < rectanglesFs.Length; i++)
+            {
+                int rand = generator.Next(10);
+
+                if (rectanglesFs[i].X > cSize.Width - 10)
+                {
+                    rectanglesFs[i].X += -4;
+                }
+
+                if (rectanglesFs[i].X < -10)
+                {                 
+
+                    int rand2 = generator.Next(10, 44);
+                    double spaceX = generator.Next(40, 90) * Math.PI + (double)lastHighes;
+
+                    if (rand % 2 == 0)
+                    {
+                        rectanglesFs[i] = new RectangleF((int)(spaceX), baseHight - 30, 10, 40);
+                    }
+                    else if (rand % 2 != 0)
+                    {
+                        rectanglesFs[i] = new RectangleF((int)(spaceX), baseHight - 10, 10, 20);
+                    }
+                    if (i == rand2)
+                    {
+                        rectanglesFs[i] = new RectangleF((int)(spaceX), baseHight - 30, 20, 20);
+                    }
+
+                }
+
+            }
 
         }
 
-        public RectangleF[] GenerateObstacels(SizeF size, int frameCount)
+
+        public void GenerateObstacelsArry()
         {
-            RectangleF[] rectangleFs = new RectangleF[50];
+            Random generator = new Random();
 
-            // Obstacles Singelobstacles = new Obstacles(40,40,40,40);
-            // Obstacles doubellObstacles = new Obstacles(60, 40, 80, 40);
-            int h = 10;
-            int w = 10;      
+            rectanglesFs[0] = new RectangleF(150, baseHight - 30, 10, 40);
 
-            Random generator = new Random(500);
-            int rand = generator.Next();
-
-            /*Rectangle rectangle = new Rectangle(Convert.ToInt32(size.Width - f)*(frameCount +1), Convert.ToInt32(size.Height / 3 + 100 ), h, w);*/
-
-            for (int i = 0; i < rectangleFs.Length; i++)
+            for (int i = 1; i < rectanglesFs.Length; i++)
             {
-                Rectangle singeOblstacles = new Rectangle(40 + 10*i, 40, w, h);
-                Rectangle doubellObstacles = new Rectangle(50 , 40, w, h * 2);
+
+                int rand = generator.Next(10);
+                int rand2 = generator.Next(10, 44);
+                double spaceX = generator.Next(40, 90) * Math.PI + rectanglesFs[i - 1].X;
 
                 if (rand % 2 == 0)
                 {
-                    rectangleFs[i] = singeOblstacles;
+                    rectanglesFs[i] = new RectangleF((int)(spaceX), baseHight - 30, 10, 40);
                 }
-                else
+                else if (rand % 2 != 0)
                 {
-                    rectangleFs[i]  = doubellObstacles;
+                    rectanglesFs[i] = new RectangleF((int)(spaceX), baseHight - 10, 10, 20);
                 }
+                if (i == rand2 || rand2 == 33)
+                {
+                    rectanglesFs[i] = new RectangleF((int)(spaceX), baseHight - 30, 20, 20);
+                }
+
             }
 
-
-            return rectangleFs;
         }
+
+
+
+        #region Properties
+        private RectangleF[] rectanglesFs;
+
+        public RectangleF[] RectangleFs
+        {
+            get { return rectanglesFs; }
+            set { rectanglesFs = value; }
+        }
+
+        public SizeF cSize { get; set; }
+        #endregion
     }
 }

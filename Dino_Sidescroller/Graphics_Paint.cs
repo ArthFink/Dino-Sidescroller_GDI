@@ -16,7 +16,7 @@ namespace Dino_Sidescroller
         public Graphics_Paint(Game_Logic game_Logic)
         {
             charakter = game_Logic.Charakter;
-            rectangles = new Rectangles();
+            rectangles = game_Logic.Rectangles;
             a = 0f;
         }
         /// <summary>
@@ -32,7 +32,7 @@ namespace Dino_Sidescroller
         /// </summary>
         public void Paint_Obstacles(Graphics g, SizeF size, int frameCount)
         {
-            g.FillRectangles(Brushes.Blue, rectangles.GenerateObstacels(size, frameCount));
+            g.FillRectangles(Brushes.Blue, rectangles.RectangleFs);
         }
 
         public void Paint_Environment(Graphics g, SizeF size)
