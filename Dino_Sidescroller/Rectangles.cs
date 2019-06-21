@@ -22,18 +22,39 @@ namespace Dino_Sidescroller
 
         public void MoveObstecals()
         {
+            Random generator = new Random();
+
             for (int i = 0; i < rectanglesFs.Length; i++)
             {
+                int rand = generator.Next(10);
+
                 if (rectanglesFs[i].X > cSize.Width - 10)
                 {
                     rectanglesFs[i].X += -4;
                 }
+
+
+
+
+                if (rectanglesFs[i].X < -10)
+                {
+                    if (rand % 2 == 0)
+                    {
+                        rectanglesFs[i] = new RectangleF(cSize.Width + (i + 33) * 30 * (int)(Math.Pow(rand, 2)), baseHight - 30, 10, 40);
+                    }
+                    else if (rand % 2 != 0)
+                    {
+                        rectanglesFs[i] = new RectangleF(cSize.Width + (i + 33) * 30 * (int)(Math.Pow(rand, 2)), baseHight - 10, 10, 20);
+                    }
+
+                }
+
+
             }
 
-            /*  if (rectanglesFs[1].X > cSize.Width - 10)
-              {
-                  rectanglesFs[1].X += -4;
-              }*/
+
+
+
         }
         public void GenerateObstacelsArry()
         {
@@ -43,13 +64,13 @@ namespace Dino_Sidescroller
             {
                 int rand = generator.Next(10);
 
-                if (rand  % 2 == 0)
+                if (rand % 2 == 0)
                 {
-                    rectanglesFs[i] = new RectangleF(cSize.Width + i * 30 * (int)(Math.Pow(rand,2)), baseHight - 30, 10, 40);
+                    rectanglesFs[i] = new RectangleF(cSize.Width + (i +5) * 30 * (int)(Math.Pow(rand, 2)), baseHight - 30, 10, 40);
                 }
                 else if (rand % 2 != 0)
                 {
-                    rectanglesFs[i] = new RectangleF(cSize.Width + i * 30* (int)(Math.Pow(rand, 2)), baseHight - 10, 10, 20);
+                    rectanglesFs[i] = new RectangleF(cSize.Width + (i + 5) * 30 * (int)(Math.Pow(rand, 2)), baseHight - 10, 10, 20);
                 }
             }
 
