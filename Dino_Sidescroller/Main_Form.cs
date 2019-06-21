@@ -58,6 +58,8 @@ namespace Dino_Sidescroller
 
             game_Logic.ObstacelsMove();
 
+
+
             game_Logic.Charakter.Jump();
 
             game_Logic.CharFall();
