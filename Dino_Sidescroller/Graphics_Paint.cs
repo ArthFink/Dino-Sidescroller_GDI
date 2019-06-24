@@ -11,13 +11,13 @@ namespace Dino_Sidescroller
     {
         Rectangles rectangles;
         Charakter charakter ;
-        float a;
+       
 
         public Graphics_Paint(Game_Logic game_Logic)
         {
             charakter = game_Logic.Charakter;
             rectangles = game_Logic.Rectangles;
-            a = 0f;
+            
         }
         /// <summary>
         /// Draws The Character relative to the current Position
@@ -41,16 +41,5 @@ namespace Dino_Sidescroller
             g.FillRectangle(Brushes.Black, 0, 2 * (size.Height / 3), size.Width, 5);
         }
 
-      /*  public void Paint_Übung(Graphics g, SizeF size)
-        {
-            float r = 100;
-            float w = 10;           
-            float h = 10;
-
-            g.FillRectangle(Brushes.Black, Convert.ToInt32( Math.Sin(a)*r)+size.Width/2, Convert.ToInt32(Math.Cos(a) * r)+size.Height/2, w, h);
-
-            a++;
-
-        }*/
     }
 }

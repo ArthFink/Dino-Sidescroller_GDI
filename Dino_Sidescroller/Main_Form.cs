@@ -13,9 +13,11 @@ namespace Dino_Sidescroller
     public partial class Main_Form : Form
     {
         Timer timer;
-        int frameCount = 1;
         Graphics_Paint graphics_Paint;
         Game_Logic game_Logic;
+        private int frameCount;
+        private Font font;
+
 
         public Main_Form()
         {
@@ -32,6 +34,11 @@ namespace Dino_Sidescroller
             KeyUp += key_Up;
 
             KeyDown += new KeyEventHandler(Key_Press);
+
+            frameCount = 1;
+
+            //font = new Font("Wingdings", 20, FontStyle.Bold);
+            font = new Font("Symbol", 20, FontStyle.Bold);
         }
 
         protected override void OnPaint(PaintEventArgs e)
@@ -48,7 +55,7 @@ namespace Dino_Sidescroller
 
             graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
 
-            //graphics_Paint.Paint_Übung(graphics, ClientSize);
+            graphics.DrawString((frameCount/10).ToString(), font, Brushes.Black, (ClientSize.Width/10)*9, 10);
         }
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
@@ -87,5 +94,14 @@ namespace Dino_Sidescroller
                 game_Logic.Charakter.KeyReleased = false;
             }
         }
+
+       
+
+        public int FrameCount
+        {
+            get { return frameCount; }
+            set { frameCount = value; }
+        }
+
     }
 }
