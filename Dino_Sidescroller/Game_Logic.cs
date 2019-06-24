@@ -52,25 +52,20 @@ namespace Dino_Sidescroller
             throw new System.NotImplementedException();
         }
 
-        public void CharFall()
-        {
-            charakter.Fall();
-        }
-
         public void RectangelsGenarate()
         {
             rectangles.GenerateObstacelsArry();
         }
+
         public void ObstacelsMove()
         {
             rectangles.MoveObstecals();
+
+
         }
-
-
-
-
-
-
-
+        public void CharJumpFall()
+        {
+            charakter.JumpFall();
+        }
     }
 }
