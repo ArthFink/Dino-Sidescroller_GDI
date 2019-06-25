@@ -7,15 +7,17 @@ using System.Windows.Forms;
 
 namespace Dino_Sidescroller
 {
-    public class Rectangles : Obstacles
+    public class Rectangles
     {
-        int baseHight;       
+        int baseHight;
+        float lastHighes;
 
         public Rectangles(SizeF cSize)
         {
-           // rectanglesFs = new RectangleF[150];
+            // rectanglesFs = new RectangleF[150];
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
             rectanglesFs = new List<RectangleF>();
+            float lastHighes = 0;
             GenerateObstacelsArry();
         }
 
@@ -23,39 +25,27 @@ namespace Dino_Sidescroller
         {
             Random generator = new Random();
 
-            float lastHighes = 0;
+            lastHighes = rectanglesFs.Max(x => x.X);
 
-
-
-            for (int i = 0; i < rectanglesFs.Count; i++)
-            {
-
-                if (lastHighes < rectanglesFs[i].X)
-                {
-                    lastHighes = rectanglesFs[i].X;
-                }
-
-            }
-
-            
 
             for (int i = 0; i < rectanglesFs.Count; i++)
             {
                 int rand = generator.Next(10);
 
-                if (rectanglesFs[i].X > cSize.Width - 10)
+                if (rectanglesFs[i].X > -10)
                 {
                     RectangleF temp = rectanglesFs[i];
-                    temp.X += -4;
+                    temp.X -= 4;
                     rectanglesFs[i] = temp;
-                    //rectanglesFs[i].X += -4;
+
                 }
 
-                if (rectanglesFs[i].X < -10)
-                {                 
 
+                if (rectanglesFs[i].X <  -3)
+                {
+                    rectanglesFs.RemoveAt(i);
                     int rand2 = generator.Next(10, 44);
-                    double spaceX = generator.Next(40, 90) * Math.PI + (double)lastHighes;
+                    double spaceX = (double)lastHighes + generator.Next(70, 90) * Math.PI;
 
                     if (rand % 2 == 0)
                     {
@@ -83,12 +73,12 @@ namespace Dino_Sidescroller
 
             rectanglesFs.Add(new RectangleF(150, baseHight - 30, 10, 40));
 
-            for (int i = 1;  i < 200; i++)
+            for (int i = 1; i < 10; i++)
             {
 
                 int rand = generator.Next(10);
                 int rand2 = generator.Next(10, 44);
-                double spaceX = generator.Next(40, 90) * Math.PI + rectanglesFs[i - 1].X;
+                double spaceX = generator.Next(70, 90) * Math.PI + rectanglesFs[i - 1].X;
 
                 if (rand % 2 == 0)
                 {

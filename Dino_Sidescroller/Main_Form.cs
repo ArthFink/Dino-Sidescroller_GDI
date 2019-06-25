@@ -55,17 +55,13 @@ namespace Dino_Sidescroller
 
             graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
 
-            graphics.DrawString((frameCount/10).ToString(), font, Brushes.Black, (ClientSize.Width/10)*9, 10);
+            graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
         }
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             //the timer starts and increments the counter.
             frameCount += 1;
-
-            /*game_Logic.CharJumpFall();
-            game_Logic.CollisionDetectrion();
-            game_Logic.ObstacelsMove();*/
 
             game_Logic.Update();
 
@@ -102,7 +98,7 @@ namespace Dino_Sidescroller
             }
         }
 
-       
+
 
         public int FrameCount
         {

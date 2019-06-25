@@ -55,7 +55,6 @@
     </Compile>
     <Compile Include="Game_Logic.cs" />
     <Compile Include="Graphics_Paint.cs" />
-    <Compile Include="Obstacles.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rectangles.cs" />
