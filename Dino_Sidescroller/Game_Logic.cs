@@ -72,10 +72,10 @@ namespace Dino_Sidescroller
         public void Update()
         {
 
-            CollisionDetectrion();
+            //CollisionDetectrion();
             ObstacelsMove();
             CharJumpFall();
-
+       
         }
 
         public void CollisionDetectrion()

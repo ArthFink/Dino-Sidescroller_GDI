@@ -11,15 +11,18 @@ namespace Dino_Sidescroller
     {
         int baseHight;
         float lastHighes;
-
+        private int frameCount;
+     
         public Rectangles(SizeF cSize)
         {
             // rectanglesFs = new RectangleF[150];
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
             rectanglesFs = new List<RectangleF>();
-            float lastHighes = 0;
+            float lastHighes = 0; 
             GenerateObstacelsArry();
+            
         }
+
 
         public void MoveObstecals()
         {
@@ -35,7 +38,7 @@ namespace Dino_Sidescroller
                 if (rectanglesFs[i].X > -10)
                 {
                     RectangleF temp = rectanglesFs[i];
-                    temp.X -= 4;
+                    temp.X -= 4 + (frameCount/500);
                     rectanglesFs[i] = temp;
 
                 }
@@ -108,6 +111,14 @@ namespace Dino_Sidescroller
         {
             get { return rectanglesFs; }
             set { rectanglesFs = value; }
+        }
+
+        
+
+        public int FrameCount
+        {
+            get { return frameCount; }
+            set { frameCount = value; }
         }
 
 

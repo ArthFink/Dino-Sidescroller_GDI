@@ -29,7 +29,7 @@ namespace Dino_Sidescroller
 
             timer = new Timer();
             timer.Tick += new EventHandler(TimerEventProcessor);
-            timer.Interval = 30;
+            timer.Interval = 17;
             timer.Start();
             KeyUp += key_Up;
 
@@ -62,13 +62,15 @@ namespace Dino_Sidescroller
         {
             //the timer starts and increments the counter.
             frameCount += 1;
+            game_Logic.Rectangles.FrameCount = frameCount;
 
             game_Logic.Update();
-
 
             Invalidate();
 
         }
+
+
 
         /// <summary>
         ///Detects If key is Presst
@@ -105,6 +107,7 @@ namespace Dino_Sidescroller
             get { return frameCount; }
             set { frameCount = value; }
         }
+
 
     }
 }
