@@ -32,7 +32,7 @@ namespace Dino_Sidescroller
         /// </summary>
         public void Paint_Obstacles(Graphics g, SizeF size, int frameCount)
         {
-            g.FillRectangles(Brushes.Blue, rectangles.RectangleFs);
+            g.FillRectangles(Brushes.Blue, rectangles.RectanglesFs.ToArray());
         }
 
         public void Paint_Environment(Graphics g, SizeF size)

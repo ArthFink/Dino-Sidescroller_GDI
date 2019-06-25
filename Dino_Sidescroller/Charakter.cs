@@ -34,6 +34,9 @@ namespace Dino_Sidescroller
 
         #region Propaties
 
+
+
+
         public bool KeyReleased
         {
             get { return keyReleased; }
@@ -123,6 +126,7 @@ namespace Dino_Sidescroller
             }
 
         }
+
 
 
     }

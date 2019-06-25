@@ -63,9 +63,12 @@ namespace Dino_Sidescroller
             //the timer starts and increments the counter.
             frameCount += 1;
 
-            game_Logic.Charakter.JumpFall();
+            /*game_Logic.CharJumpFall();
+            game_Logic.CollisionDetectrion();
+            game_Logic.ObstacelsMove();*/
 
-            game_Logic.ObstacelsMove();
+            game_Logic.Update();
+
 
             Invalidate();
 
@@ -84,6 +87,10 @@ namespace Dino_Sidescroller
                 }
             }
 
+            if (e.KeyCode == Keys.Down)
+            {
+
+            }
 
         }
 
