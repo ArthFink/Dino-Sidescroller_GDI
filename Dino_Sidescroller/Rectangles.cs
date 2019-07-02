@@ -15,7 +15,7 @@ namespace Dino_Sidescroller
      
         public Rectangles(SizeF cSize)
         {
-            // rectanglesFs = new RectangleF[150];
+            
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
             rectanglesFs = new List<RectangleF>();
             float lastHighes = 0; 

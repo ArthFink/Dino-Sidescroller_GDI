@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
-using System.Windows.Forms;
 
 
 namespace Dino_Sidescroller
@@ -25,14 +21,14 @@ namespace Dino_Sidescroller
         {
             cSize = clinetSize;
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
-            rect = new Rectangle(15, baseHight, 10, 10);
+            rect = new Rectangle(15, baseHight, 20, 20);
 
 
             jumphight = 19;
             gravati = 0;
         }
 
-        #region Propaties
+        #region Proprieties
 
 
 
@@ -88,7 +84,7 @@ namespace Dino_Sidescroller
         #endregion
 
 
-        public void JumpFall()
+        public void CharakterJumpFall()
         {
 
             if (keyPresedUp && jumphight > 0)
@@ -117,7 +113,7 @@ namespace Dino_Sidescroller
 
         }
 
-        //If Charakert Falls below the base line the charakter is resettet
+        //If Character Falls below the base line the character is reset
         public void CharakterReset()
         {
             if (rect.Y > baseHight)

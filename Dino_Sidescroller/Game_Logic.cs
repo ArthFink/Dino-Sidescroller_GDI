@@ -72,7 +72,7 @@ namespace Dino_Sidescroller
         public void Update()
         {
 
-            //CollisionDetectrion();
+            CollisionDetectrion();
             ObstacelsMove();
             CharJumpFall();
        
@@ -111,11 +111,11 @@ namespace Dino_Sidescroller
 
         public void CharJumpFall()
         {
-            if (!collision)
-            {
-                charakter.JumpFall();
+            //if (!collision)
+            //{
+                charakter.CharakterJumpFall();
 
-            }
+            //}
         }
     }
 }
