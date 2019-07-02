@@ -1,18 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Dino_Sidescroller
 {
     public partial class Main_Form : Form
     {
-        Timer timer;
+        Timer timer, dinoTimer;
         Graphics_Paint graphics_Paint;
         Game_Logic game_Logic;
         private int frameCount;
@@ -33,31 +27,34 @@ namespace Dino_Sidescroller
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Interval = 17;
             timer.Start();
+            frameCount = 1;
+
+            /* dinoTimer = new Timer();
+             timer.Tick += new EventHandler(DinoTimerEventProcessor);
+             timer.Interval = 40;
+             timer.Start();*/
+
             KeyUp += key_Up;
 
             KeyDown += new KeyEventHandler(Key_Press);
 
-            frameCount = 1;
-
-            //font = new Font("Wingdings", 20, FontStyle.Bold);
-            font = new Font("Symbol", 20, FontStyle.Bold);
+            font = new Font("Symbol", 18, FontStyle.Bold);
         }
 
         protected override void OnPaint(PaintEventArgs e)
         {
             // Has always to be the first line of the overridden OnPaint-Method.
             base.OnPaint(e);
+
             // Get the graphics object.        
             Graphics graphics = e.Graphics;
 
 
-            // graphics_Paint.Paint_Environment(graphics, ClientSize);
+            graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
-            //  graphics_Paint.Paint_Character(graphics, ClientSize);
+            graphics_Paint.Paint_Environment(graphics, ClientSize);
 
-            // graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
-
-            //graphics_Paint.DrawImage2FloatRectF(e)
+            graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
 
             graphics_Paint.DinoAnimation(graphics, ClientSize);
         }
@@ -67,6 +64,7 @@ namespace Dino_Sidescroller
         {
             //the timer starts and increments the counter.
             frameCount += 1;
+
             game_Logic.Rectangles.FrameCount = frameCount;
 
             game_Logic.Update();
@@ -74,6 +72,14 @@ namespace Dino_Sidescroller
             Invalidate();
 
         }
+
+
+        /*  private void DinoTimerEventProcessor(Object myObject, EventArgs myEventArgs)
+          {
+              game_Logic.Update();
+
+              Invalidate();
+          }*/
 
 
 

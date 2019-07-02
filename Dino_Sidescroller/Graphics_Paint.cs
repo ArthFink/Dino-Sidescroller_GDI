@@ -11,15 +11,15 @@ namespace Dino_Sidescroller
     {
         Rectangles rectangles;
         Charakter charakter;
-        Image charImage;
         int animationIndex;
-
+        Image DinoAnimationImage;
 
         public Graphics_Paint(Game_Logic game_Logic)
         {
             charakter = game_Logic.Charakter;
             rectangles = game_Logic.Rectangles;
-            charImage = Properties.Resources.Dinoanimation;
+            DinoAnimationImage = Properties.Resources.Dinoanimation;
+
             animationIndex = 0;
 
         }
@@ -30,9 +30,6 @@ namespace Dino_Sidescroller
         {
 
             g.FillRectangle(Brushes.Brown, charakter.Rect);
-
-            // g.DrawImage(charImage, charakter.Rect, 10, 10, 10,10 , GraphicsUnit.Millimeter);
-
 
         }
 
@@ -51,17 +48,10 @@ namespace Dino_Sidescroller
         }
 
 
-        public void DinoAnimation(Graphics graphics, SizeF size)
+        public void DinoAnimation(Graphics g, SizeF cSize)
         {
-            if (graphics == null)
-            {
-                throw new ArgumentNullException(nameof(graphics));
-            }
 
-            Image DinoAnimationImage = Properties.Resources.Dinoanimation;
 
-            float x = 0.0F;
-            float y = 0.0F;
             GraphicsUnit units = GraphicsUnit.Pixel;
 
             //animationIndex = animationIndex == 2 ? 0 : animationIndex++;
@@ -76,7 +66,13 @@ namespace Dino_Sidescroller
             }
 
             RectangleF srcRect = new RectangleF(45.0F * animationIndex, 0.0F, 43.0F, 51.0F);
-            graphics.DrawImage(DinoAnimationImage, x, y, srcRect, units);
+
+            charakter.CharakterJumpFall();
+
+            float y = charakter.Rect.Y;
+            float x = charakter.Rect.X;
+
+            g.DrawImage(DinoAnimationImage, x, y, srcRect, units);
         }
 
     }

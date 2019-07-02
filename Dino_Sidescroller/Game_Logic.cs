@@ -11,6 +11,7 @@ namespace Dino_Sidescroller
     {
         private Charakter charakter;
         private Rectangles rectangles;
+    
         private float firstObstical;
         private bool collision;
 
@@ -18,8 +19,9 @@ namespace Dino_Sidescroller
         public Game_Logic(SizeF clinetSize)
         {
             charakter = new Charakter(clinetSize);
-            //charakter.CharakterReset();
+            charakter.CharakterReset();
             rectangles = new Rectangles(clinetSize);
+           // graphics_Paint = new Graphics_Paint();
             bool collision = false;
 
         }
@@ -86,8 +88,6 @@ namespace Dino_Sidescroller
 
             Collision = firstObst.IntersectsWith(charakter.Rect);
 
-
-
         }
 
         public void RectangelsGenarate()
@@ -117,5 +117,7 @@ namespace Dino_Sidescroller
 
             //}
         }
+
+
     }
 }
