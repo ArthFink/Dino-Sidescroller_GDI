@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Dino_Sidescroller.Charakter">
+    <Position X="1" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgQAAAIAgAAAAACAAAAIogAACiAAAAAIAAAAAAAEAg=</HashCode>
+      <FileName>Charakter.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dino_Sidescroller.Obstacles">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQIAAAAAAAAAAAQAAAAMAAAACAAAAAAAAAAAAAECA=</HashCode>
+      <FileName>Obstacles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dino_Sidescroller.Graphics_Paint">
+    <Position X="5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEIAAAAAAAAAAAAAAAAAAEEAAAAAAAgAAAABAAAAAA=</HashCode>
+      <FileName>Graphics_Paint.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dino_Sidescroller.Game_Logic">
+    <Position X="9" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgEIAAABAAAAAAgMAAAAAAAAEAAAAAAAAAAAAAIACAA=</HashCode>
+      <FileName>Game_Logic.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Dino_Sidescroller.Rectangles">
+    <Position X="4.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAACAAAAQAAAAAAAEAAAIAAAAAAABAA=</HashCode>
+      <FileName>Rectangles.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -7,8 +7,6 @@ namespace Dino_Sidescroller
     public class Charakter
     {
 
-        const int maxJumpHight = 200;
-
         SizeF cSize;
         private Rectangle rect;
         private bool keyReleased;
@@ -16,13 +14,16 @@ namespace Dino_Sidescroller
         private bool keyPresedUp;
         private int jumphight;
         private int possition_y;
+        private PointF charPossition;
+
 
         public Charakter(SizeF clinetSize)
         {
             cSize = clinetSize;
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
-            rect = new Rectangle(15, baseHight, 20, 20);
+            // rect = new Rectangle(15, baseHight, 20, 20);
 
+            CharPossition = new PointF(30, baseHight-38);
 
             jumphight = 19;
             gravati = 0;
@@ -30,7 +31,11 @@ namespace Dino_Sidescroller
 
         #region Proprieties
 
-
+        public Rectangle Rect
+        {
+            get { return rect; }
+            set { rect = value; }
+        }
 
 
         public bool KeyReleased
@@ -51,11 +56,12 @@ namespace Dino_Sidescroller
             set { keyPresedUp = value; }
         }
 
-        public Rectangle Rect
+        public PointF CharPossition
         {
-            get { return rect; }
-            set { rect = value; }
+            get { return charPossition; }
+            set { charPossition = value; }
         }
+
 
         public int Possition_x
         {
@@ -92,22 +98,21 @@ namespace Dino_Sidescroller
                 gravati++;
                 jumphight--;
 
-                rect.Y -= (int)(jumphight - gravati);
+                charPossition.Y -= (float)(jumphight - gravati);
             }
             else if (keyPresedUp && gravati > 0)
             {
                 gravati--;
                 jumphight++;
 
-                rect.Y += (int)(gravati - jumphight);
+                charPossition.Y += (float)(gravati - jumphight);
             }
-            if (rect.Y > baseHight)
+            if (CharPossition.Y > baseHight-38)
             {
                 gravati = 0;
                 jumphight = 19;
                 keyPresedUp = false;
                 CharakterReset();
-
             }
 
 

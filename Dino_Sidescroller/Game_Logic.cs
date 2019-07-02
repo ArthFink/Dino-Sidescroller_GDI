@@ -11,15 +11,32 @@ namespace Dino_Sidescroller
     {
         private Charakter charakter;
         private Rectangles rectangles;
+    
+        private float firstObstical;
+        private bool collision;
+
 
         public Game_Logic(SizeF clinetSize)
         {
             charakter = new Charakter(clinetSize);
-            //charakter.CharakterReset();
+            charakter.CharakterReset();
             rectangles = new Rectangles(clinetSize);
+           // graphics_Paint = new Graphics_Paint();
+            bool collision = false;
+
         }
 
         #region Properties
+
+
+        public bool Collision
+        {
+            get { return collision; }
+            set { collision = value; }
+        }
+
+
+
 
         private RectangleF obstacles;
 
@@ -44,24 +61,63 @@ namespace Dino_Sidescroller
             set { rectangles = value; }
         }
 
+
+
+        public float LastObstical
+        {
+            get { return firstObstical; }
+            set { firstObstical = value; }
+        }
+
         #endregion
 
+        public void Update()
+        {
 
+            CollisionDetectrion();
+            ObstacelsMove();
+            CharJumpFall();
+       
+        }
+
+        public void CollisionDetectrion()
+        {
+
+            firstObstical = rectangles.RectanglesFs.Min(x => x.X);
+            RectangleF firstObst = rectangles.RectanglesFs.Find(x => x.X == firstObstical);
+
+            Collision = firstObst.IntersectsWith(charakter.Rect);
+
+        }
 
         public void RectangelsGenarate()
         {
-            rectangles.GenerateObstacelsArry();
+            if (!collision)
+            {
+                rectangles.GenerateObstacelsArry();
+
+            }
         }
 
         public void ObstacelsMove()
         {
-            rectangles.MoveObstecals();
+            if (!collision)
+            {
+                rectangles.MoveObstecals();
+            }
 
 
         }
+
         public void CharJumpFall()
         {
-            charakter.JumpFall();
+            //if (!collision)
+            //{
+                charakter.CharakterJumpFall();
+
+            //}
         }
+
+
     }
 }
