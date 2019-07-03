@@ -83,17 +83,17 @@ namespace Dino_Sidescroller
                 int rand2 = generator.Next(10, 44);
                 double spaceX = generator.Next(70, 90) * Math.PI + rectanglesFs[i - 1].X;
 
-                if (rand % 2 == 0)
+               /* if (rand % 2 == 0)
                 {
                     rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 30, 10, 40));
                 }
                 else if (rand % 2 != 0)
                 {
                     rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 10, 10, 20));
-                }
-                if (i == rand2 || rand2 == 33)
+                }*/
+                if (/*i == rand2 || rand2 == 33*/true)
                 {
-                    rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 30, 10, 20));
+                    rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 10, 20, 20));
                 }
 
             }

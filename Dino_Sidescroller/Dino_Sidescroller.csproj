@@ -95,9 +95,6 @@
     <None Include="Resources\100-error-offline.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\100-offline-sprite.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\200-disabled.png" />
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Dinoanimation.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\100-offline-sprite.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\LargCacti.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -11,7 +11,7 @@ namespace Dino_Sidescroller
 
         SizeF cSize;
         private Rectangle rect;
-        private bool keyReleased;
+        //private bool keyReleased;
         private int baseHight;
         private bool keyPresedUp;
         private int jumphight;
@@ -22,7 +22,7 @@ namespace Dino_Sidescroller
             cSize = clinetSize;
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 48;
 
-            rect = new Rectangle(25, baseHight, 20, 40);
+            rect = new Rectangle(50, baseHight, 20, 40);
 
             jumphight = 10;
             gravati = 0;
@@ -32,31 +32,30 @@ namespace Dino_Sidescroller
 
         public void CharakterJumpFall()
         {
-
+            //Jump
             if (keyPresedUp && jumphight > 0)
             {
                 gravati++;
                 jumphight--;
 
-                rect.Y -= (int)(jumphight - 0.5*gravati);
+                rect.Y -= (int)(jumphight - 0.3*gravati);
             }
-            else if (keyPresedUp && gravati > 0)
+            //Fall
+            else if (!keyPresedUp && gravati > 0)
             {
                 gravati--;
                 jumphight++;
 
-                rect.Y += (int)(0.5*gravati - jumphight);
+                rect.Y += (int)(0.3*gravati - jumphight);
             }
-            if (rect.Y > baseHight)
+
+            if (rect.Y >= baseHight)
             {
                 gravati = 0;
                 jumphight = 19;
                 keyPresedUp = false;
                 CharakterReset();
-
             }
-
-
         }
 
         //If Character Falls below the base line the character is reset
@@ -73,12 +72,12 @@ namespace Dino_Sidescroller
 
 
 
-
+        /*
         public bool KeyReleased
         {
             get { return keyReleased; }
             set { keyReleased = value; }
-        }
+        }*/
 
         public int BaseHight
         {

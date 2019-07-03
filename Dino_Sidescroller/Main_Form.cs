@@ -52,11 +52,14 @@ namespace Dino_Sidescroller
 
             graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
-            graphics_Paint.Paint_Environment(graphics, ClientSize);
+              graphics_Paint.Paint_Environment(graphics, ClientSize);
 
             graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
+            graphics_Paint.CactiAnimation(graphics, ClientSize);
 
-            graphics_Paint.DinoAnimation(graphics, ClientSize);
+            //  graphics_Paint.DinoAnimation(graphics, ClientSize);
+
+
         }
 
 
@@ -104,7 +107,7 @@ namespace Dino_Sidescroller
         {
             if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
             {
-                game_Logic.Charakter.KeyReleased = false;
+                game_Logic.Charakter.KeyPresedUp = false;
             }
         }
 

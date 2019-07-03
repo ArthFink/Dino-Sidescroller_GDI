@@ -63,59 +63,9 @@ namespace Dino_Sidescroller.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap _100_disabled {
+        internal static System.Drawing.Bitmap Cacti_Imges {
             get {
-                object obj = ResourceManager.GetObject("_100_disabled", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _100_error_offline {
-            get {
-                object obj = ResourceManager.GetObject("_100_error_offline", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _100_offline_sprite {
-            get {
-                object obj = ResourceManager.GetObject("_100_offline_sprite", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _200_disabled {
-            get {
-                object obj = ResourceManager.GetObject("_200_disabled", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _200_error_offline {
-            get {
-                object obj = ResourceManager.GetObject("_200_error_offline", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _200_offline_sprite {
-            get {
-                object obj = ResourceManager.GetObject("_200_offline_sprite", resourceCulture);
+                object obj = ResourceManager.GetObject("Cacti_Imges", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +76,16 @@ namespace Dino_Sidescroller.Properties {
         internal static System.Drawing.Bitmap Dinoanimation {
             get {
                 object obj = ResourceManager.GetObject("Dinoanimation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap LargCacti {
+            get {
+                object obj = ResourceManager.GetObject("LargCacti", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
