@@ -20,12 +20,53 @@ namespace Dino_Sidescroller
         public Charakter(SizeF clinetSize)
         {
             cSize = clinetSize;
-            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
-            rect = new Rectangle(15, baseHight, 20, 20);
+            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 48;
 
+            rect = new Rectangle(25, baseHight, 20, 40);
 
-            jumphight = 19;
+            jumphight = 10;
             gravati = 0;
+        }
+
+
+
+        public void CharakterJumpFall()
+        {
+
+            if (keyPresedUp && jumphight > 0)
+            {
+                gravati++;
+                jumphight--;
+
+                rect.Y -= (int)(jumphight - 0.5*gravati);
+            }
+            else if (keyPresedUp && gravati > 0)
+            {
+                gravati--;
+                jumphight++;
+
+                rect.Y += (int)(0.5*gravati - jumphight);
+            }
+            if (rect.Y > baseHight)
+            {
+                gravati = 0;
+                jumphight = 19;
+                keyPresedUp = false;
+                CharakterReset();
+
+            }
+
+
+        }
+
+        //If Character Falls below the base line the character is reset
+        public void CharakterReset()
+        {
+            if (rect.Y > baseHight)
+            {
+                rect.Y = baseHight;
+            }
+
         }
 
         #region Proprieties
@@ -82,47 +123,6 @@ namespace Dino_Sidescroller
 
 
         #endregion
-
-
-        public void CharakterJumpFall()
-        {
-
-            if (keyPresedUp && jumphight > 0)
-            {
-                gravati++;
-                jumphight--;
-
-                rect.Y -= (int)(jumphight - gravati);
-            }
-            else if (keyPresedUp && gravati > 0)
-            {
-                gravati--;
-                jumphight++;
-
-                rect.Y += (int)(gravati - jumphight);
-            }
-            if (rect.Y > baseHight)
-            {
-                gravati = 0;
-                jumphight = 19;
-                keyPresedUp = false;
-                CharakterReset();
-
-            }
-
-
-        }
-
-        //If Character Falls below the base line the character is reset
-        public void CharakterReset()
-        {
-            if (rect.Y > baseHight)
-            {
-                rect.Y = baseHight;
-            }
-
-        }
-
 
 
     }
