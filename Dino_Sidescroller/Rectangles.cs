@@ -12,92 +12,78 @@ namespace Dino_Sidescroller
         int baseHight;
         float lastHighes;
         private int frameCount;
-     
+        int ajustSpacing;
+
+
         public Rectangles(SizeF cSize)
         {
-            
+
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
             rectanglesFs = new List<RectangleF>();
-            float lastHighes = 0; 
+            lastHighes = 0;
+            ajustSpacing = 0;
             GenerateObstacelsArry();
-            
-        }
-
-
-        public void MoveObstecals()
-        {
-            Random generator = new Random();
-
-            lastHighes = rectanglesFs.Max(x => x.X);
-
-
-            for (int i = 0; i < rectanglesFs.Count; i++)
-            {
-                int rand = generator.Next(10);
-
-                if (rectanglesFs[i].X > -10)
-                {
-                    RectangleF temp = rectanglesFs[i];
-                    temp.X -= 4 + (frameCount/500);
-                    rectanglesFs[i] = temp;
-
-                }
-
-
-                if (rectanglesFs[i].X <  -3)
-                {
-                    rectanglesFs.RemoveAt(i);
-                    int rand2 = generator.Next(10, 44);
-                    double spaceX = (double)lastHighes + generator.Next(70, 90) * Math.PI;
-
-                    if (rand % 2 == 0)
-                    {
-                        rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 30, 10, 40));
-                    }
-                    else if (rand % 2 != 0)
-                    {
-                        rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 10, 10, 20));
-                    }
-                    if (i == rand2)
-                    {
-                        rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 30, 20, 20));
-                    }
-
-                }
-
-            }
 
         }
-
 
         public void GenerateObstacelsArry()
         {
             Random generator = new Random();
-
-            rectanglesFs.Add(new RectangleF(150, baseHight - 30, 10, 40));
+            //Crating the first Rectangle 
+            rectanglesFs.Add(new RectangleF(140, baseHight - 40, 25, 50));
 
             for (int i = 1; i < 10; i++)
             {
-
-                int rand = generator.Next(10);
-                int rand2 = generator.Next(10, 44);
-                double spaceX = generator.Next(70, 90) * Math.PI + rectanglesFs[i - 1].X;
-
-               /* if (rand % 2 == 0)
-                {
-                    rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 30, 10, 40));
-                }
-                else if (rand % 2 != 0)
-                {
-                    rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 10, 10, 20));
-                }*/
-                if (/*i == rand2 || rand2 == 33*/true)
-                {
-                    rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 10, 20, 20));
-                }
-
+                CrateObstical(i, rectanglesFs[i - 1].X);
             }
 
+        }
+
+        public void MoveObstecals()
+        {
+
+            lastHighes = rectanglesFs.Max(x => x.X);
+
+            for (int i = 0; i < rectanglesFs.Count; i++)
+            {
+                if (rectanglesFs[i].X > -10)
+                {
+                    RectangleF temp = rectanglesFs[i];
+                    temp.X -= 4 + (frameCount / 500);
+                    rectanglesFs[i] = temp;
+
+                }
+
+                if (rectanglesFs[i].X < -3)
+                {
+                    CrateObstical(i, lastHighes);
+                    rectanglesFs.RemoveAt(i);
+                }
+            }
+
+        }
+
+        private void CrateObstical(int i, float lastHighes)
+        {
+
+            Random generator = new Random();
+            int rand = generator.Next(10);
+            int rand2 = generator.Next(0, 44);
+
+            double spaceX = (double)lastHighes + generator.Next(70, 90) * Math.PI +100;
+
+            if (rand % 2 == 0)
+            {
+                rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 15, 17, 25));
+            }
+            else if (rand % 2 != 0)
+            {
+                rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 40, 25, 50));
+            }
+            if (i == rand2 || rand2 == 33 || rand == rand2 || rand2  == 18)
+            {
+                rectanglesFs.Add(new RectangleF((int)(spaceX), baseHight - 45, 50, 55));
+            }
         }
 
 
@@ -113,7 +99,7 @@ namespace Dino_Sidescroller
             set { rectanglesFs = value; }
         }
 
-        
+
 
         public int FrameCount
         {

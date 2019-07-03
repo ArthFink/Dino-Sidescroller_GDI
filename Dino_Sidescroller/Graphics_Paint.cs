@@ -87,34 +87,37 @@ namespace Dino_Sidescroller
         public void CactiAnimation(Graphics g, SizeF cSize)
         {
             GraphicsUnit units = GraphicsUnit.Pixel;
-            int random = generator.Next(6);
+
+
 
             for (int i = 0; i < rectangles.RectanglesFs.Count; i++)
             {
-                xRect = rectangles.RectanglesFs[i].X;
-                yRect = rectangles.RectanglesFs[i].Y;
 
+                if (rectangles.RectanglesFs[i].Width == 55)
+                {
+                    xRect = rectangles.RectanglesFs[i].X;
+                    yRect = rectangles.RectanglesFs[i].Y + 16;
 
-                RectangleF srcRect = new RectangleF(17.0F * random, 0.0F, 17.0F, 50.0F);
-                g.DrawImage(CactiAnimationImag, xRect, yRect, srcRect, units);
+                    RectangleF largSrcRect5 = new RectangleF(100.0F, 0.0F, 55.0F, 50.0F);
+                    g.DrawImage(LargCactiAnimationImag, xRect, yRect, largSrcRect5, units);
+                }
+                else if (rectangles.RectanglesFs[i].Width == 17)
+                {
+                    xRect = rectangles.RectanglesFs[i].X;
+                    yRect = rectangles.RectanglesFs[i].Y - 12;
+                    RectangleF srcRect = new RectangleF(17.0F * generator.Next(6), 0.0F, 17.0F, 45.0F);
+                    g.DrawImage(CactiAnimationImag, xRect, yRect, srcRect, units);
+                }
+                else if (rectangles.RectanglesFs[i].Width == 25)
+                {
+                    xRect = rectangles.RectanglesFs[i].X;
+                    yRect = rectangles.RectanglesFs[i].Y - 38;
+
+                    RectangleF largSrcRect2 = new RectangleF(25.0F * generator.Next(0, 4), 0.0F, 25.0F, 50.0F);
+                    g.DrawImage(LargCactiAnimationImag, xRect, yRect + 50, largSrcRect2, units);
+                }
+
             }
-
-            float x = 50;
-            float y = 50;
-
-            RectangleF largSrcRect1 = new RectangleF(0.0F, 0.0F, 25.0F, 50.0F);
-            RectangleF largSrcRect2 = new RectangleF(25.0F, 0.0F, 25.0F, 50.0F);
-            RectangleF largSrcRect3 = new RectangleF(50.0F, 0.0F, 25.0F, 50.0F);
-            RectangleF largSrcRect4 = new RectangleF(75.0F, 0.0F, 25.0F, 50.0F);
-
-            RectangleF largSrcRect5 = new RectangleF(100.0F, 0.0F, 55.0F, 50.0F);
-
-            g.DrawImage(LargCactiAnimationImag, x, y, largSrcRect1, units);
-            g.DrawImage(LargCactiAnimationImag, x, y + 50, largSrcRect2, units);
-            g.DrawImage(LargCactiAnimationImag, x, y + 100, largSrcRect3, units);
-            g.DrawImage(LargCactiAnimationImag, x, y + 150, largSrcRect4, units);
-            g.DrawImage(LargCactiAnimationImag, x + 200, y + 150, largSrcRect5, units);
-
 
         }
 
