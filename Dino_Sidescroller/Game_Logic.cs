@@ -83,10 +83,10 @@ namespace Dino_Sidescroller
         public void CollisionDetectrion()
         {
 
-            firstObstical = rectangles.RectanglesFs.Min(x => x.X);
+           /* firstObstical = rectangles.RectanglesFs.Min(x => x.X);
             RectangleF firstObst = rectangles.RectanglesFs.Find(x => x.X == firstObstical);
-
-            Collision = firstObst.IntersectsWith(charakter.Rect);
+            */
+            Collision = rectangles.Cacti[0].HitBoxRectangle.IntersectsWith(charakter.Rect);
 
         }
 
