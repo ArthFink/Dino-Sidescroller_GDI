@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
-using System.Windows.Forms;
 
 
 namespace Dino_Sidescroller
@@ -15,7 +11,7 @@ namespace Dino_Sidescroller
 
         SizeF cSize;
         private Rectangle rect;
-        private bool keyReleased;
+        //private bool keyReleased;
         private int baseHight;
         private bool keyPresedUp;
         private int jumphight;
@@ -24,24 +20,64 @@ namespace Dino_Sidescroller
         public Charakter(SizeF clinetSize)
         {
             cSize = clinetSize;
-            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
-            rect = new Rectangle(15, baseHight, 10, 10);
+            baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 48;
 
+            rect = new Rectangle(50, baseHight, 20, 40);
 
-            jumphight = 19;
+            jumphight = 10;
             gravati = 0;
         }
 
-        #region Propaties
+
+
+        public void CharakterJumpFall()
+        {
+            //Jump
+            if (keyPresedUp && jumphight > 0)
+            {
+                gravati++;
+                jumphight--;
+
+                rect.Y -= (int)(jumphight - 0.3*gravati);
+            }
+            //Fall
+            else if (!keyPresedUp && gravati > 0)
+            {
+                gravati--;
+                jumphight++;
+
+                rect.Y += (int)(0.3*gravati - jumphight);
+            }
+
+            if (rect.Y >= baseHight)
+            {
+                gravati = 0;
+                jumphight = 19;
+                keyPresedUp = false;
+                CharakterReset();
+            }
+        }
+
+        //If Character Falls below the base line the character is reset
+        public void CharakterReset()
+        {
+            if (rect.Y > baseHight)
+            {
+                rect.Y = baseHight;
+            }
+
+        }
+
+        #region Proprieties
 
 
 
-
+        /*
         public bool KeyReleased
         {
             get { return keyReleased; }
             set { keyReleased = value; }
-        }
+        }*/
 
         public int BaseHight
         {
@@ -86,47 +122,6 @@ namespace Dino_Sidescroller
 
 
         #endregion
-
-
-        public void JumpFall()
-        {
-
-            if (keyPresedUp && jumphight > 0)
-            {
-                gravati++;
-                jumphight--;
-
-                rect.Y -= (int)(jumphight - gravati);
-            }
-            else if (keyPresedUp && gravati > 0)
-            {
-                gravati--;
-                jumphight++;
-
-                rect.Y += (int)(gravati - jumphight);
-            }
-            if (rect.Y > baseHight)
-            {
-                gravati = 0;
-                jumphight = 19;
-                keyPresedUp = false;
-                CharakterReset();
-
-            }
-
-
-        }
-
-        //If Charakert Falls below the base line the charakter is resettet
-        public void CharakterReset()
-        {
-            if (rect.Y > baseHight)
-            {
-                rect.Y = baseHight;
-            }
-
-        }
-
 
 
     }
