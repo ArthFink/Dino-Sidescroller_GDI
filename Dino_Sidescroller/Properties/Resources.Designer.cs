@@ -63,6 +63,16 @@ namespace Dino_Sidescroller.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BaseLine {
+            get {
+                object obj = ResourceManager.GetObject("BaseLine", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cacti_Imges {
             get {
                 object obj = ResourceManager.GetObject("Cacti_Imges", resourceCulture);
@@ -87,6 +97,15 @@ namespace Dino_Sidescroller.Properties {
             get {
                 object obj = ResourceManager.GetObject("LargCacti", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Zeichenfolge, die NO ähnelt.
+        /// </summary>
+        internal static string String {
+            get {
+                return ResourceManager.GetString("String", resourceCulture);
             }
         }
     }

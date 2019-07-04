@@ -52,10 +52,11 @@ namespace Dino_Sidescroller
 
             graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
-              graphics_Paint.Paint_Environment(graphics, ClientSize);
+            //graphics_Paint.Paint_Environment(graphics, ClientSize);
 
             graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
             graphics_Paint.CactiAnimation(graphics, ClientSize);
+            graphics_Paint.BaseLine(graphics, ClientSize);
 
             //  graphics_Paint.DinoAnimation(graphics, ClientSize);
 

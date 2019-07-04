@@ -14,17 +14,14 @@ namespace Dino_Sidescroller
 
         public Cactus()
         {
-            Random r = new Random();
-            r.Next();
-            imgIndex = 0;
+
             hitBoxRectangle = new Rectangle(10, 10, 10, 10);
 
         }
 
         #region Properties
 
-
-
+ 
         public Rectangle HitBoxRectangle
         {
             get { return hitBoxRectangle; }
