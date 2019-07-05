@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Threading;
 
 namespace Dino_Sidescroller
 {
@@ -68,20 +69,24 @@ namespace Dino_Sidescroller
         }
 
 
-        public void DinoAnimation(Graphics g, SizeF cSize)
+        public void DinoAnimation(Graphics g, SizeF cSize,int FrameCount)
         {
-            g.DrawRectangle(Pens.Red, charakter.Rect);
-
             GraphicsUnit units = GraphicsUnit.Pixel;
 
+            if (FrameCount % 3 == 0)
+            {
+                if (animationIndex < 2)
+                {
+                    animationIndex += 1;
+                }
+                else if (animationIndex == 2)
+                {
+                    animationIndex = 0;
+                }
 
-            if (animationIndex < 2)
-            {
-                animationIndex += 1;
-            }
-            else if (animationIndex == 2)
-            {
-                animationIndex = 0;
+
+
+               
             }
 
             Rectangle rectangle = new Rectangle(45 * animationIndex, 0, 43, 51);
@@ -90,8 +95,8 @@ namespace Dino_Sidescroller
 
             float y = charakter.Rect.Y;
             float x = charakter.Rect.X - 10;
-
             g.DrawImage(DinoAnimationImage, x, y, rectangle, units);
+
         }
 
         public void CactiAnimation(Graphics g, SizeF cSize)

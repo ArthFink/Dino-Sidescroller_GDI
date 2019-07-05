@@ -29,12 +29,13 @@ namespace Dino_Sidescroller
             timer.Start();
             frameCount = 1;
             score = frameCount;
+
             /* dinoTimer = new Timer();
              timer.Tick += new EventHandler(DinoTimerEventProcessor);
              timer.Interval = 40;
              timer.Start();*/
 
-            KeyUp += Key_Up;         
+            KeyUp += Key_Up;
 
             font = new Font("Symbol", 18, FontStyle.Bold);
         }
@@ -64,7 +65,7 @@ namespace Dino_Sidescroller
 
                 graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
                 graphics_Paint.CactiAnimation(graphics, ClientSize);
-                graphics_Paint.DinoAnimation(graphics, ClientSize);
+                graphics_Paint.DinoAnimation(graphics, ClientSize,frameCount);
                 graphics_Paint.Paint_Character(graphics, ClientSize);
 
             }
@@ -100,12 +101,13 @@ namespace Dino_Sidescroller
         }
 
 
-        /*  private void DinoTimerEventProcessor(Object myObject, EventArgs myEventArgs)
-          {
-              game_Logic.Update();
+        private void DinoTimerEventProcessor(Object myObject, EventArgs myEventArgs)
+        {
 
-              Invalidate();
-          }*/
+           // graphics_Paint.DinoAnimation(graphics, ClientSize);
+
+            Invalidate();
+        }
 
 
 
@@ -140,7 +142,7 @@ namespace Dino_Sidescroller
             if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up) && !game_Logic.Charakter.Jump && game_Logic.Charakter.Rect.Height > 15)
                 game_Logic.Charakter.Space = true;
 
-            if (e.KeyCode == Keys.Space && game_Logic.Collision )
+            if (e.KeyCode == Keys.Space && game_Logic.Collision)
             {
                 //restart
                 new Main_Form().ShowDialog();
@@ -149,8 +151,10 @@ namespace Dino_Sidescroller
             if (e.KeyCode == Keys.Up && game_Logic.Collision)
             {
                 //restart
+                this.Visible = false;
                 new Main_Form().ShowDialog();
-                Close();
+                this.Close();
+                Visible = true;
             }
         }
 
@@ -163,9 +167,11 @@ namespace Dino_Sidescroller
             b = graphics_Paint.GameOverHitbox.Contains(x, y);
 
             if (b)
-            {                
+            {
+                this.Visible = false;
                 new Main_Form().ShowDialog();
-                Close();
+                this.Close();
+                Visible = true;
             }
 
         }
