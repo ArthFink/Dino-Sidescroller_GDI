@@ -11,14 +11,14 @@ namespace Dino_Sidescroller
         Game_Logic game_Logic;
         private int frameCount;
         private Font font;
-        int score;
+        int score, clicked;
 
         public Main_Form()
         {
             InitializeComponent();
             DoubleBuffered = true;
             FormBorderStyle = FormBorderStyle.FixedDialog;
-            StartPosition = FormStartPosition.CenterScreen;       
+            StartPosition = FormStartPosition.CenterScreen;
 
 
             game_Logic = new Game_Logic(ClientSize);
@@ -30,7 +30,7 @@ namespace Dino_Sidescroller
             timer.Start();
             frameCount = 1;
             score = frameCount;
-
+            clicked = 0;
 
             KeyUp += Key_Up;
 
@@ -60,10 +60,9 @@ namespace Dino_Sidescroller
             else
             {
 
-                graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
+                graphics_Paint.Paint_HitBox(graphics, ClientSize, frameCount);
                 graphics_Paint.CactiAnimation(graphics, ClientSize);
                 graphics_Paint.DinoAnimation(graphics, ClientSize, frameCount);
-                graphics_Paint.Paint_Character(graphics, ClientSize);
                 graphics_Paint.Paint_Environment(graphics, ClientSize, FrameCount);
             }
 
@@ -129,7 +128,7 @@ namespace Dino_Sidescroller
                 Visible = false;
                 new Main_Form().ShowDialog();
                 this.Close();
-                Visible = true;
+
             }
             if (e.KeyCode == Keys.Up && game_Logic.Collision)
             {
@@ -137,11 +136,25 @@ namespace Dino_Sidescroller
                 Visible = false;
                 new Main_Form().ShowDialog();
                 this.Close();
-                Visible = true;
+
             }
             if (e.KeyCode == Keys.Escape)
             {
                 Close();
+            }
+            if (e.KeyCode == Keys.B)
+            {
+                clicked += 1;
+
+                if (clicked % 2 != 0)
+                {
+                    graphics_Paint.HitBoxShow = true;
+                }
+                else
+                    graphics_Paint.HitBoxShow = false;
+
+
+
             }
         }
 
@@ -158,7 +171,7 @@ namespace Dino_Sidescroller
                 this.Visible = false;
                 new Main_Form().ShowDialog();
                 this.Close();
-                Visible = true;
+
             }
 
         }
@@ -168,6 +181,8 @@ namespace Dino_Sidescroller
             get { return frameCount; }
             set { frameCount = value; }
         }
+
+
 
 
     }

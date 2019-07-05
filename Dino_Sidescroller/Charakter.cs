@@ -7,7 +7,7 @@ namespace Dino_Sidescroller
     public class Charakter
     {
 
-        const int maxjumphight = 150;
+        const int maxjumphight = 120;
         SizeF cSize;
         Rectangle rect;
         bool jump, space;
@@ -28,7 +28,7 @@ namespace Dino_Sidescroller
 
             jumphight = maxjumphight;
 
-            jumpVelocitiy = 4;
+            jumpVelocitiy = 6;
         }
 
 

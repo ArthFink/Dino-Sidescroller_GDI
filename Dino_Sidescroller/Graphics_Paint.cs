@@ -26,6 +26,10 @@ namespace Dino_Sidescroller
 
         float xRect, yRect, x;
 
+         bool hitboxShow;
+
+ 
+
         public Graphics_Paint(Game_Logic game_Logic)
         {
             charakter = game_Logic.Charakter;
@@ -42,27 +46,27 @@ namespace Dino_Sidescroller
             generator = new Random();
             xRect = 100; yRect = 100; x = 0; xClound = 0;
 
-        }
-        /// <summary>
-        /// Draws The Character relative to the current Position
-        /// </summary>
-        public void Paint_Character(Graphics g, SizeF size)
-        {
-
-             g.DrawRectangle(Pens.Silver, charakter.Rect);
+            hitboxShow = false;
 
         }
 
+
         /// <summary>
-        /// Draws The obstacles relative to the current Position
+        /// Shows the hitBox If f3 & b is Pressed
         /// </summary>
-        public void Paint_Obstacles(Graphics g, SizeF size, int frameCount)
+        public void Paint_HitBox(Graphics g, SizeF size, int frameCount)
         {
-            foreach (Cactus cactus in rectangles.Cacti)
+
+            if (hitboxShow)
             {
-                g.DrawRectangle(Pens.Gray, cactus.HitBoxRectangle);
-
+                g.DrawRectangle(Pens.Red, charakter.Rect);
+                foreach (Cactus cactus in rectangles.Cacti)
+                {
+                    g.DrawRectangle(Pens.Red, cactus.HitBoxRectangle);
+                  
+                }
             }
+
         }
 
         public void Paint_Environment(Graphics g, SizeF size, int FrameCount)
@@ -73,8 +77,7 @@ namespace Dino_Sidescroller
             g.DrawImage(CloudImg, size.Width / 2 - 160, 70);
             
 
-        }
-
+        } 
 
         public void DinoAnimation(Graphics g, SizeF cSize, int FrameCount)
         {
@@ -190,7 +193,14 @@ namespace Dino_Sidescroller
             set { gameOverHitbox = value; }
         }
 
+     
+      
 
+        public bool HitBoxShow
+        {
+            get { return hitboxShow; }
+            set { hitboxShow = value; }
+        }
 
     }
 }
