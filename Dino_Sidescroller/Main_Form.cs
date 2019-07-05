@@ -67,10 +67,10 @@ namespace Dino_Sidescroller
                 graphics_Paint.CactiAnimation(graphics, ClientSize);
                 graphics_Paint.DinoAnimation(graphics, ClientSize,frameCount);
                 graphics_Paint.Paint_Character(graphics, ClientSize);
-
+                graphics_Paint.Paint_Environment(graphics, ClientSize, FrameCount);
             }
 
-            //graphics_Paint.Paint_Environment(graphics, ClientSize);
+            
 
         }
 

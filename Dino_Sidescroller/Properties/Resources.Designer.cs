@@ -83,6 +83,16 @@ namespace Dino_Sidescroller.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clound {
+            get {
+                object obj = ResourceManager.GetObject("clound", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Dinoanimation {
             get {
                 object obj = ResourceManager.GetObject("Dinoanimation", resourceCulture);

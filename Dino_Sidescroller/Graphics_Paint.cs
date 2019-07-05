@@ -13,12 +13,13 @@ namespace Dino_Sidescroller
         Rectangles rectangles;
         Charakter charakter;
 
-        int animationIndex;
+        int animationIndex, xClound;
         Image DinoAnimationImage;
         Image CactiAnimationImag;
         Image LargCactiAnimationImag;
         Image GameOverSceenImg;
         Image Base;
+        Image CloudImg;
         Random generator;
         Rectangle gameOverHitbox;
 
@@ -33,11 +34,12 @@ namespace Dino_Sidescroller
             CactiAnimationImag = Properties.Resources.Cacti_Imges;
             LargCactiAnimationImag = Properties.Resources.LargCacti;
             GameOverSceenImg = Properties.Resources.GameOverSceen;
+            CloudImg = Properties.Resources.clound;
             this.Base = Properties.Resources.BaseLine;
 
             animationIndex = 0;
             generator = new Random();
-            xRect = 100; yRect = 100; x = 0;
+            xRect = 100; yRect = 100; x = 0; xClound = 0;
 
         }
         /// <summary>
@@ -46,7 +48,7 @@ namespace Dino_Sidescroller
         public void Paint_Character(Graphics g, SizeF size)
         {
 
-           // g.FillRectangle(Brushes.Brown, charakter.Rect);
+            // g.FillRectangle(Brushes.Brown, charakter.Rect);
 
         }
 
@@ -62,15 +64,21 @@ namespace Dino_Sidescroller
             }
         }
 
-        public void Paint_Environment(Graphics g, SizeF size)
+        public void Paint_Environment(Graphics g, SizeF size,int FrameCount)
         {
-            //Base Line
-            // g.FillRectangle(Brushes.Black, 0, 2 * (size.Height / 3), size.Width, 5);
+            GraphicsUnit units = GraphicsUnit.Pixel;
+
+            g.DrawImage(CloudImg, 100, 37);
+            g.DrawImage(CloudImg, size.Width/3 *2, 40);
+            g.DrawImage(CloudImg, size.Width -60, 50);
+            g.DrawImage(CloudImg, size.Width/2 - 160, 70);
+
         }
 
 
-        public void DinoAnimation(Graphics g, SizeF cSize,int FrameCount)
+        public void DinoAnimation(Graphics g, SizeF cSize, int FrameCount)
         {
+
             GraphicsUnit units = GraphicsUnit.Pixel;
 
             if (FrameCount % 3 == 0)
@@ -83,10 +91,6 @@ namespace Dino_Sidescroller
                 {
                     animationIndex = 0;
                 }
-
-
-
-               
             }
 
             Rectangle rectangle = new Rectangle(45 * animationIndex, 0, 43, 51);
@@ -96,7 +100,6 @@ namespace Dino_Sidescroller
             float y = charakter.Rect.Y;
             float x = charakter.Rect.X - 10;
             g.DrawImage(DinoAnimationImage, x, y, rectangle, units);
-
         }
 
         public void CactiAnimation(Graphics g, SizeF cSize)
@@ -109,7 +112,7 @@ namespace Dino_Sidescroller
                 if (rectangles.Cacti[i].HitBoxRectangle.Height == 39)
                 {
                     xRect = rectangles.Cacti[i].HitBoxRectangle.X;
-                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y ;
+                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y;
 
                     RectangleF largSrcRect5 = new RectangleF(100.0F, 0.0F, 55.0F, 50.0F);
                     g.DrawImage(LargCactiAnimationImag, xRect, yRect, largSrcRect5, units);
@@ -117,7 +120,7 @@ namespace Dino_Sidescroller
                 else if (rectangles.Cacti[i].HitBoxRectangle.Height == 25)
                 {
                     xRect = rectangles.Cacti[i].HitBoxRectangle.X;
-                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y -12;
+                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y - 12;
 
                     RectangleF srcRect = new RectangleF(17.0F * rectangles.Cacti[i].ImgIndex, 0.0F, 17.0F, 45.0F);
                     g.DrawImage(CactiAnimationImag, xRect, yRect, srcRect, units);
@@ -125,7 +128,7 @@ namespace Dino_Sidescroller
                 else if (rectangles.Cacti[i].HitBoxRectangle.Height == 40)
                 {
                     xRect = rectangles.Cacti[i].HitBoxRectangle.X;
-                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y -50;
+                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y - 50;
 
                     RectangleF largSrcRect2 = new RectangleF(25.0F * rectangles.Cacti[i].ImgIndex, 0.0F, 25.0F, 50.0F);
                     g.DrawImage(LargCactiAnimationImag, xRect, yRect + 50, largSrcRect2, units);
@@ -134,6 +137,7 @@ namespace Dino_Sidescroller
             }
 
         }
+
         public void BaseLine(Graphics g, SizeF cSize, bool move)
         {
 
@@ -163,9 +167,9 @@ namespace Dino_Sidescroller
 
             GraphicsUnit units = GraphicsUnit.Pixel;
 
-           Rectangle srcRect = new Rectangle(0, 0, 500, 50);
+            Rectangle srcRect = new Rectangle(0, 0, 500, 50);
 
-            float y = (cSize.Height / 2)-70;
+            float y = (cSize.Height / 2) - 70;
             float x = cSize.Width / 2 - 130;
 
             g.DrawImage(GameOverSceenImg, x, y, srcRect, units);
@@ -173,16 +177,14 @@ namespace Dino_Sidescroller
             gameOverHitbox.X = (int)x;
             gameOverHitbox.Y = (int)y;
             gameOverHitbox.Width = srcRect.Width;
-            gameOverHitbox.Height = srcRect.Height; 
+            gameOverHitbox.Height = srcRect.Height;
 
         }
 
-       
-
         public Rectangle GameOverHitbox
         {
-            get { return  gameOverHitbox; }
-            set {  gameOverHitbox = value; }
+            get { return gameOverHitbox; }
+            set { gameOverHitbox = value; }
         }
 
 
