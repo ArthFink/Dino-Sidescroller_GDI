@@ -6,7 +6,7 @@ namespace Dino_Sidescroller
 {
     public partial class Main_Form : Form
     {
-        Timer timer, dinoTimer;
+        Timer timer;
         Graphics_Paint graphics_Paint;
         Game_Logic game_Logic;
         private int frameCount;
@@ -17,8 +17,9 @@ namespace Dino_Sidescroller
         {
             InitializeComponent();
             DoubleBuffered = true;
-            FormBorderStyle = FormBorderStyle.None;
-            StartPosition = FormStartPosition.CenterScreen;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            StartPosition = FormStartPosition.CenterScreen;       
+
 
             game_Logic = new Game_Logic(ClientSize);
             graphics_Paint = new Graphics_Paint(game_Logic);
@@ -30,10 +31,6 @@ namespace Dino_Sidescroller
             frameCount = 1;
             score = frameCount;
 
-            /* dinoTimer = new Timer();
-             timer.Tick += new EventHandler(DinoTimerEventProcessor);
-             timer.Interval = 40;
-             timer.Start();*/
 
             KeyUp += Key_Up;
 
@@ -65,12 +62,12 @@ namespace Dino_Sidescroller
 
                 graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
                 graphics_Paint.CactiAnimation(graphics, ClientSize);
-                graphics_Paint.DinoAnimation(graphics, ClientSize,frameCount);
+                graphics_Paint.DinoAnimation(graphics, ClientSize, frameCount);
                 graphics_Paint.Paint_Character(graphics, ClientSize);
                 graphics_Paint.Paint_Environment(graphics, ClientSize, FrameCount);
             }
 
-            
+
 
         }
 
@@ -101,15 +98,6 @@ namespace Dino_Sidescroller
         }
 
 
-        private void DinoTimerEventProcessor(Object myObject, EventArgs myEventArgs)
-        {
-
-           // graphics_Paint.DinoAnimation(graphics, ClientSize);
-
-            Invalidate();
-        }
-
-
 
         private void Key_Up(object sender, KeyEventArgs e)
         {
@@ -122,8 +110,6 @@ namespace Dino_Sidescroller
 
             if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
             {
-                // characterSize = new Size(characterHeight, characterHeight);
-
                 game_Logic.Charakter.JumpVelocitiy = 5;
 
             }
@@ -134,8 +120,6 @@ namespace Dino_Sidescroller
         {
             if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
             {
-                //characterSize = new Size(characterHeight, characterHeight / 2);
-
                 game_Logic.Charakter.JumpVelocitiy = 8;
             }
 
@@ -145,16 +129,22 @@ namespace Dino_Sidescroller
             if (e.KeyCode == Keys.Space && game_Logic.Collision)
             {
                 //restart
+                Visible = false;
                 new Main_Form().ShowDialog();
-                Close();
+                this.Close();
+                Visible = true;
             }
             if (e.KeyCode == Keys.Up && game_Logic.Collision)
             {
                 //restart
-                this.Visible = false;
+                Visible = false;
                 new Main_Form().ShowDialog();
                 this.Close();
                 Visible = true;
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
+                Close();
             }
         }
 

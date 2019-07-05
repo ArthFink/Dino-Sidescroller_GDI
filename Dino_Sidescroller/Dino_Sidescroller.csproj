@@ -48,7 +48,6 @@
   <ItemGroup>
     <Compile Include="Cactus.cs" />
     <Compile Include="Charakter.cs" />
-    <Compile Include="Cloud.cs" />
     <Compile Include="Main_Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +106,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

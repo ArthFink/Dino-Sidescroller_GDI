@@ -20,6 +20,7 @@ namespace Dino_Sidescroller
         Image GameOverSceenImg;
         Image Base;
         Image CloudImg;
+        
         Random generator;
         Rectangle gameOverHitbox;
 
@@ -64,14 +65,14 @@ namespace Dino_Sidescroller
             }
         }
 
-        public void Paint_Environment(Graphics g, SizeF size,int FrameCount)
+        public void Paint_Environment(Graphics g, SizeF size, int FrameCount)
         {
-            GraphicsUnit units = GraphicsUnit.Pixel;
-
             g.DrawImage(CloudImg, 100, 37);
-            g.DrawImage(CloudImg, size.Width/3 *2, 40);
-            g.DrawImage(CloudImg, size.Width -60, 50);
-            g.DrawImage(CloudImg, size.Width/2 - 160, 70);
+            g.DrawImage(CloudImg, size.Width / 3 * 2, 40);
+            g.DrawImage(CloudImg, size.Width - 60, 50);
+            g.DrawImage(CloudImg, size.Width / 2 - 160, 70);
+
+            
 
         }
 
@@ -81,25 +82,32 @@ namespace Dino_Sidescroller
 
             GraphicsUnit units = GraphicsUnit.Pixel;
 
-            if (FrameCount % 3 == 0)
-            {
-                if (animationIndex < 2)
+            
+            
+                if (FrameCount % 3 == 0 && !charakter.Space  && !charakter.Jump)
                 {
-                    animationIndex += 1;
+                    if (animationIndex < 2)
+                    {
+                        animationIndex += 1;
+                    }
+                    else if (animationIndex == 2)
+                    {
+                        animationIndex = 0;
+                    }
                 }
-                else if (animationIndex == 2)
-                {
-                    animationIndex = 0;
-                }
-            }
 
-            Rectangle rectangle = new Rectangle(45 * animationIndex, 0, 43, 51);
+                Rectangle rectangle = new Rectangle(45 * animationIndex, 0, 43, 51);
 
-            charakter.CharakterJumpFall();
+                charakter.CharakterJumpFall();
 
-            float y = charakter.Rect.Y;
-            float x = charakter.Rect.X - 10;
-            g.DrawImage(DinoAnimationImage, x, y, rectangle, units);
+                float y = charakter.Rect.Y;
+                float x = charakter.Rect.X - 10;
+                g.DrawImage(DinoAnimationImage, x, y, rectangle, units);
+            
+
+
+
+            
         }
 
         public void CactiAnimation(Graphics g, SizeF cSize)

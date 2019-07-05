@@ -15,7 +15,6 @@ namespace Dino_Sidescroller
         private int frameCount;
         int ajustSpacing;
         private List<Cactus> cacti;
-        List<Cloud> cloud;
         int imgIndex;
 
 
