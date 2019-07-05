@@ -28,8 +28,9 @@ namespace Dino_Sidescroller
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Interval = 17;
             timer.Start();
-            frameCount = 1;
+            frameCount = 500;
             score = frameCount;
+
             clicked = 0;
 
             KeyUp += Key_Up;
@@ -45,8 +46,6 @@ namespace Dino_Sidescroller
             // Get the graphics object.        
             Graphics graphics = e.Graphics;
 
-            //Score
-            graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
             graphics_Paint.BaseLine(graphics, ClientSize, !game_Logic.Collision);
 
@@ -55,15 +54,15 @@ namespace Dino_Sidescroller
 
                 graphics_Paint.GameOver(graphics, ClientSize);
                 //Score
-                graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
+                graphics.DrawString((score / 10 - 50).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
             }
             else
             {
-
+                graphics.DrawString((score / 10 - 50).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
                 graphics_Paint.Paint_HitBox(graphics, ClientSize, frameCount);
                 graphics_Paint.CactiAnimation(graphics, ClientSize);
                 graphics_Paint.DinoAnimation(graphics, ClientSize, frameCount);
-                graphics_Paint.Paint_Environment(graphics, ClientSize, FrameCount);
+                graphics_Paint.Paint_Environment(graphics, ClientSize, frameCount);
             }
 
 
@@ -78,6 +77,8 @@ namespace Dino_Sidescroller
                 //the timer starts and increments the counter.
                 frameCount += 1;
             }
+            score = frameCount;
+
 
 
             game_Logic.Rectangles.FrameCount = frameCount;
@@ -153,11 +154,8 @@ namespace Dino_Sidescroller
                 else
                     graphics_Paint.HitBoxShow = false;
 
-
-
             }
         }
-
         private void Mouse_Click(object sender, MouseEventArgs e)
         {
             int x = e.X;
