@@ -38,7 +38,7 @@ namespace Dino_Sidescroller
             //Crating the first Rectangle 
             cacti.Add(new Cactus());
 
-            cacti[0].HitBoxRectangle = new Rectangle(140, baseHight - 40, 25, 50);
+            cacti[0].HitBoxRectangle = new Rectangle(240, baseHight - 29, 13, 40);
 
             for (int i = 1; i < 10; i++)
             {
@@ -83,23 +83,29 @@ namespace Dino_Sidescroller
 
             double spaceX = (double)lastHighes + generator.Next(90, 120) * Math.PI + 100;
             cacti.Add(new Cactus());
+            bool f = false;
 
             if (rand % 2 == 0)
             {
-                cacti[cacti.Count - 1].HitBoxRectangle = new Rectangle((int)(spaceX), baseHight - 15, 17, 25);
+                cacti[cacti.Count - 1].HitBoxRectangle = new Rectangle((int)(spaceX), baseHight - 15, 10, 25);
                 cacti[cacti.Count - 1].ImgIndex = generator.Next(0, 6);
-                
+
             }
             else if (rand % 2 != 0)
             {
-                cacti[cacti.Count - 1].HitBoxRectangle = new Rectangle((int)(spaceX), baseHight - 40, 25, 50);
-                cacti[cacti.Count - 1].ImgIndex = generator.Next(0, 3);
+
+                if (rand2 == 33 || rand == 1)
+                {
+                    cacti[cacti.Count - 1].HitBoxRectangle = new Rectangle((int)(spaceX), baseHight - 30, 37, 39);
+                    cacti[cacti.Count - 1].ImgIndex = 0;
+                }
+                else
+                {
+                    cacti[cacti.Count - 1].HitBoxRectangle = new Rectangle((int)(spaceX), baseHight - 29, 13, 40);
+                    cacti[cacti.Count - 1].ImgIndex = generator.Next(0, 3);
+                }
             }
-            if (rand2 == 33 || rand == 1)
-            {
-                cacti[cacti.Count - 1].HitBoxRectangle = new Rectangle((int)(spaceX), baseHight - 45, 50, 55);
-                cacti[cacti.Count - 1].ImgIndex = 0;
-            }
+
             Thread.Sleep(1);
         }
 
@@ -112,14 +118,6 @@ namespace Dino_Sidescroller
             get { return cacti; }
             set { cacti = value; }
         }
-
-        /*private List<RectangleF> rectanglesFs;
-
-        public List<RectangleF> RectanglesFs
-        {
-            get { return rectanglesFs; }
-            set { rectanglesFs = value; }
-        }*/
 
 
 

@@ -45,7 +45,7 @@ namespace Dino_Sidescroller
         public void Paint_Character(Graphics g, SizeF size)
         {
 
-            g.FillRectangle(Brushes.Brown, charakter.Rect);
+           // g.FillRectangle(Brushes.Brown, charakter.Rect);
 
         }
 
@@ -101,26 +101,26 @@ namespace Dino_Sidescroller
             for (int i = 0; i < rectangles.Cacti.Count; i++)
             {
 
-                if (rectangles.Cacti[i].HitBoxRectangle.Width == 50)
+                if (rectangles.Cacti[i].HitBoxRectangle.Height == 39)
                 {
                     xRect = rectangles.Cacti[i].HitBoxRectangle.X;
-                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y + 16;
+                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y ;
 
                     RectangleF largSrcRect5 = new RectangleF(100.0F, 0.0F, 55.0F, 50.0F);
                     g.DrawImage(LargCactiAnimationImag, xRect, yRect, largSrcRect5, units);
                 }
-                else if (rectangles.Cacti[i].HitBoxRectangle.Width == 17)
+                else if (rectangles.Cacti[i].HitBoxRectangle.Height == 25)
                 {
                     xRect = rectangles.Cacti[i].HitBoxRectangle.X;
-                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y - 12;
+                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y -12;
 
                     RectangleF srcRect = new RectangleF(17.0F * rectangles.Cacti[i].ImgIndex, 0.0F, 17.0F, 45.0F);
                     g.DrawImage(CactiAnimationImag, xRect, yRect, srcRect, units);
                 }
-                else if (rectangles.Cacti[i].HitBoxRectangle.Width == 25)
+                else if (rectangles.Cacti[i].HitBoxRectangle.Height == 40)
                 {
                     xRect = rectangles.Cacti[i].HitBoxRectangle.X;
-                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y - 38;
+                    yRect = rectangles.Cacti[i].HitBoxRectangle.Y -50;
 
                     RectangleF largSrcRect2 = new RectangleF(25.0F * rectangles.Cacti[i].ImgIndex, 0.0F, 25.0F, 50.0F);
                     g.DrawImage(LargCactiAnimationImag, xRect, yRect + 50, largSrcRect2, units);
@@ -168,7 +168,7 @@ namespace Dino_Sidescroller
             gameOverHitbox.X = (int)x;
             gameOverHitbox.Y = (int)y;
             gameOverHitbox.Width = srcRect.Width;
-            gameOverHitbox.Height = srcRect.Height;
+            gameOverHitbox.Height = srcRect.Height; 
 
         }
 
