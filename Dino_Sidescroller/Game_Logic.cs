@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Drawing;
 
 namespace Dino_Sidescroller
 {
@@ -11,7 +6,7 @@ namespace Dino_Sidescroller
     {
         private Charakter charakter;
         private Rectangles rectangles;
-    
+
         private float firstObstical;
         private bool collision;
 
@@ -26,7 +21,7 @@ namespace Dino_Sidescroller
 
         }
 
-      
+
 
         public void Update()
         {
@@ -34,12 +29,12 @@ namespace Dino_Sidescroller
             CollisionDetectrion();
             ObstacelsMove();
             CharJumpFall();
-       
+
         }
 
         public void CollisionDetectrion()
         {
-       
+
             collision = rectangles.Cacti[0].HitBoxRectangle.IntersectsWith(charakter.Rect);
 
         }
@@ -66,7 +61,7 @@ namespace Dino_Sidescroller
         public void CharJumpFall()
         {
             if (!collision)
-           {
+            {
                 charakter.CharakterJumpFall();
 
             }

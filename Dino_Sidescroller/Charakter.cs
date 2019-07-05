@@ -22,7 +22,7 @@ namespace Dino_Sidescroller
             cSize = clinetSize;
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 16;
 
-            rect = new Rectangle(60, Function(jumphight), 25,31);
+            rect = new Rectangle(60, Function(jumphight), 25, 31);
 
             jump = false; space = false;
 
@@ -35,7 +35,7 @@ namespace Dino_Sidescroller
 
         public void CharakterJumpFall()
         {
-            
+
             XCalculation();
 
             rect.Y = Function(jumphight);
@@ -58,26 +58,26 @@ namespace Dino_Sidescroller
 
         private void XCalculation()
         {
-           
+
             if (!space && jumphight < maxjumphight)
                 jumphight += jumpVelocitiy;
-          
+
             else if (space && jumphight >= 0)
                 jumphight -= jumpVelocitiy;
 
-           
+
             else if (jumphight == maxjumphight)
             {
                 space = false;
                 jump = false;
             }
 
-  
+
         }
 
         public bool MaxHeightReached()
         {
-           
+
             if (jumphight <= 0)
                 return true;
 

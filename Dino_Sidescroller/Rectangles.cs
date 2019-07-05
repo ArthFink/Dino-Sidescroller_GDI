@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Drawing;
-using System.Windows.Forms;
+using System.Linq;
 using System.Threading;
 
 namespace Dino_Sidescroller
@@ -13,7 +11,6 @@ namespace Dino_Sidescroller
         int baseHight;
         float lastHighes;
         private int frameCount;
-        int ajustSpacing;
         private List<Cactus> cacti;
         int imgIndex;
 
@@ -21,11 +18,9 @@ namespace Dino_Sidescroller
         public Rectangles(SizeF cSize)
         {
             cacti = new List<Cactus>();
-          
+
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 10;
-            // rectanglesFs = new List<RectangleF>();
             lastHighes = 0;
-            ajustSpacing = 0;
             GenerateObstacelsArry();
             Random r = new Random();
 
@@ -40,13 +35,13 @@ namespace Dino_Sidescroller
             cacti.Add(new Cactus());
 
 
-         
+
             cacti[0].HitBoxRectangle = new Rectangle(240, baseHight - 29, 13, 40);
-            
+
             for (int i = 1; i < 10; i++)
             {
                 CrateObstical(cacti[i - 1].HitBoxRectangle.X, i);
-              
+
             }
 
         }
@@ -74,49 +69,6 @@ namespace Dino_Sidescroller
             }
 
         }
-
-        /*  private void MoveClouds()
-          {
-
-              for (int i = 0; i < cacti.Count; i++)
-              {
-                  if (cloud[i].CloudPoint.X > -10)
-                  {
-                      Point temp = cloud[i].CloudPoint;
-                      temp.X -= 4 + (frameCount / 500);
-                      cloud[i].CloudPoint = temp;
-
-                  }
-
-                  if (cloud[i].CloudPoint.X < -3)
-                  {
-
-                      cloud.RemoveAt(i);
-                  }
-              }
-
-          }
-
-              private void CrateCloud()
-          {
-              Random generator = new Random();
-
-              cloud.Add(new Cloud());
-
-              double spaceX =  generator.Next(90, 120) * Math.PI + 600;
-
-              cloud[cloud.Count - 1].CloudPoint = new Point(10, 50*generator.Next(6));
-
-
-          }
-
-                    public List<Cloud> Cloud
-        {
-            get { return cloud; }
-            set { cloud = value; }
-        }
-
-  */
 
         private void CrateObstical(float lastHighes, int i)
         {
@@ -155,7 +107,7 @@ namespace Dino_Sidescroller
 
             Thread.Sleep(1);
         }
-        
+
 
         #region Properties
 

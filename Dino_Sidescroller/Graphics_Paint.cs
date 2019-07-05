@@ -44,7 +44,7 @@ namespace Dino_Sidescroller
 
             animationIndex = 0;
             generator = new Random();
-            xRect = 100; yRect = 100; x = 0; xClound = 0;
+            xRect = 100; yRect = 100; x = 0; 
 
             hitboxShow = false;
 
