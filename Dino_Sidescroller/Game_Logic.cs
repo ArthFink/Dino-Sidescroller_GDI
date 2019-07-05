@@ -65,11 +65,11 @@ namespace Dino_Sidescroller
 
         public void CharJumpFall()
         {
-            //if (!collision)
-           // {
+            if (!collision)
+           {
                 charakter.CharakterJumpFall();
 
-            //}
+            }
         }
 
 

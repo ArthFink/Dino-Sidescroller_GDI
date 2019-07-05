@@ -6,19 +6,20 @@ namespace Dino_Sidescroller
 {
     public partial class Main_Form : Form
     {
-        Timer timer, dinoTimer;
+        Timer timer;
         Graphics_Paint graphics_Paint;
         Game_Logic game_Logic;
         private int frameCount;
         private Font font;
-        int score;
+        int score, clicked;
 
         public Main_Form()
         {
             InitializeComponent();
             DoubleBuffered = true;
-            FormBorderStyle = FormBorderStyle.None;
+            FormBorderStyle = FormBorderStyle.FixedDialog;
             StartPosition = FormStartPosition.CenterScreen;
+
 
             game_Logic = new Game_Logic(ClientSize);
             graphics_Paint = new Graphics_Paint(game_Logic);
@@ -27,14 +28,12 @@ namespace Dino_Sidescroller
             timer.Tick += new EventHandler(TimerEventProcessor);
             timer.Interval = 17;
             timer.Start();
-            frameCount = 1;
+            frameCount = 500;
             score = frameCount;
-            /* dinoTimer = new Timer();
-             timer.Tick += new EventHandler(DinoTimerEventProcessor);
-             timer.Interval = 40;
-             timer.Start();*/
 
-            KeyUp += Key_Up;         
+            clicked = 0;
+
+            KeyUp += Key_Up;
 
             font = new Font("Symbol", 18, FontStyle.Bold);
         }
@@ -47,8 +46,6 @@ namespace Dino_Sidescroller
             // Get the graphics object.        
             Graphics graphics = e.Graphics;
 
-            //Score
-            graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
             graphics_Paint.BaseLine(graphics, ClientSize, !game_Logic.Collision);
 
@@ -57,22 +54,20 @@ namespace Dino_Sidescroller
 
                 graphics_Paint.GameOver(graphics, ClientSize);
                 //Score
-                graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
+                graphics.DrawString((score / 10 - 50).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
             }
             else
             {
-
-                graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
+                graphics.DrawString((score / 10 - 50).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
+                graphics_Paint.Paint_HitBox(graphics, ClientSize, frameCount);
                 graphics_Paint.CactiAnimation(graphics, ClientSize);
-                graphics_Paint.DinoAnimation(graphics, ClientSize);
-                graphics_Paint.Paint_Character(graphics, ClientSize);
-
+                graphics_Paint.DinoAnimation(graphics, ClientSize, frameCount);
+                graphics_Paint.Paint_Environment(graphics, ClientSize, frameCount);
             }
 
-            //graphics_Paint.Paint_Environment(graphics, ClientSize);
+
 
         }
-
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
@@ -82,6 +77,8 @@ namespace Dino_Sidescroller
                 //the timer starts and increments the counter.
                 frameCount += 1;
             }
+            score = frameCount;
+
 
 
             game_Logic.Rectangles.FrameCount = frameCount;
@@ -99,16 +96,6 @@ namespace Dino_Sidescroller
 
         }
 
-
-        /*  private void DinoTimerEventProcessor(Object myObject, EventArgs myEventArgs)
-          {
-              game_Logic.Update();
-
-              Invalidate();
-          }*/
-
-
-
         private void Key_Up(object sender, KeyEventArgs e)
         {
 
@@ -120,8 +107,6 @@ namespace Dino_Sidescroller
 
             if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
             {
-                // characterSize = new Size(characterHeight, characterHeight);
-
                 game_Logic.Charakter.JumpVelocitiy = 5;
 
             }
@@ -132,28 +117,45 @@ namespace Dino_Sidescroller
         {
             if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
             {
-                //characterSize = new Size(characterHeight, characterHeight / 2);
-
                 game_Logic.Charakter.JumpVelocitiy = 8;
             }
 
             if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up) && !game_Logic.Charakter.Jump && game_Logic.Charakter.Rect.Height > 15)
                 game_Logic.Charakter.Space = true;
 
-            if (e.KeyCode == Keys.Space && game_Logic.Collision )
+            if (e.KeyCode == Keys.Space && game_Logic.Collision)
             {
                 //restart
+                Visible = false;
                 new Main_Form().ShowDialog();
-                Close();
+                this.Close();
+
             }
             if (e.KeyCode == Keys.Up && game_Logic.Collision)
             {
                 //restart
+                Visible = false;
                 new Main_Form().ShowDialog();
+                this.Close();
+
+            }
+            if (e.KeyCode == Keys.Escape)
+            {
                 Close();
             }
-        }
+            if (e.KeyCode == Keys.B)
+            {
+                clicked += 1;
 
+                if (clicked % 2 != 0)
+                {
+                    graphics_Paint.HitBoxShow = true;
+                }
+                else
+                    graphics_Paint.HitBoxShow = false;
+
+            }
+        }
         private void Mouse_Click(object sender, MouseEventArgs e)
         {
             int x = e.X;
@@ -163,9 +165,11 @@ namespace Dino_Sidescroller
             b = graphics_Paint.GameOverHitbox.Contains(x, y);
 
             if (b)
-            {                
+            {
+                this.Visible = false;
                 new Main_Form().ShowDialog();
-                Close();
+                this.Close();
+
             }
 
         }
@@ -175,6 +179,8 @@ namespace Dino_Sidescroller
             get { return frameCount; }
             set { frameCount = value; }
         }
+
+
 
 
     }
