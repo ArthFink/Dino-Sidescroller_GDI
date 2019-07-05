@@ -34,9 +34,7 @@ namespace Dino_Sidescroller
              timer.Interval = 40;
              timer.Start();*/
 
-            KeyUp += Key_Up;
-
-            //KeyDown += new KeyEventHandler(Key_Press);
+            KeyUp += Key_Up;         
 
             font = new Font("Symbol", 18, FontStyle.Bold);
         }
@@ -141,6 +139,19 @@ namespace Dino_Sidescroller
 
             if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up) && !game_Logic.Charakter.Jump && game_Logic.Charakter.Rect.Height > 15)
                 game_Logic.Charakter.Space = true;
+
+            if (e.KeyCode == Keys.Space && game_Logic.Collision )
+            {
+                //restart
+                new Main_Form().ShowDialog();
+                Close();
+            }
+            if (e.KeyCode == Keys.Up && game_Logic.Collision)
+            {
+                //restart
+                new Main_Form().ShowDialog();
+                Close();
+            }
         }
 
         private void Mouse_Click(object sender, MouseEventArgs e)
@@ -149,18 +160,13 @@ namespace Dino_Sidescroller
             int y = e.Y;
             bool b = false;
 
-
-
             b = graphics_Paint.GameOverHitbox.Contains(x, y);
 
             if (b)
-            {
-                
+            {                
                 new Main_Form().ShowDialog();
                 Close();
             }
-
-
 
         }
 
