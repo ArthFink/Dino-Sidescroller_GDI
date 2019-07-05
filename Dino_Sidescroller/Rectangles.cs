@@ -128,7 +128,7 @@ namespace Dino_Sidescroller
             int rand2 = generator.Next(0, 44);
 
 
-            double spaceX = (double)lastHighes + generator.Next(90, 120) * Math.PI + 100;
+            double spaceX = (double)lastHighes + generator.Next(80, 120) * Math.PI + 150;
             cacti.Add(new Cactus());
             bool f = false;
 

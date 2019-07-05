@@ -22,7 +22,7 @@ namespace Dino_Sidescroller
             cSize = clinetSize;
             baseHight = Convert.ToInt32(cSize.Height / 3) * 2 - 16;
 
-            rect = new Rectangle(60, Function(jumphight), 30, 30);
+            rect = new Rectangle(60, Function(jumphight), 25,31);
 
             jump = false; space = false;
 

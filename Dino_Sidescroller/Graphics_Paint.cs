@@ -49,7 +49,7 @@ namespace Dino_Sidescroller
         public void Paint_Character(Graphics g, SizeF size)
         {
 
-            // g.FillRectangle(Brushes.Brown, charakter.Rect);
+             g.DrawRectangle(Pens.Silver, charakter.Rect);
 
         }
 
@@ -71,7 +71,6 @@ namespace Dino_Sidescroller
             g.DrawImage(CloudImg, size.Width / 3 * 2, 40);
             g.DrawImage(CloudImg, size.Width - 60, 50);
             g.DrawImage(CloudImg, size.Width / 2 - 160, 70);
-
             
 
         }
@@ -102,12 +101,8 @@ namespace Dino_Sidescroller
 
                 float y = charakter.Rect.Y;
                 float x = charakter.Rect.X - 10;
-                g.DrawImage(DinoAnimationImage, x, y, rectangle, units);
-            
+                g.DrawImage(DinoAnimationImage, x, y, rectangle, units);      
 
-
-
-            
         }
 
         public void CactiAnimation(Graphics g, SizeF cSize)

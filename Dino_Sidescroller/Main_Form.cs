@@ -71,7 +71,6 @@ namespace Dino_Sidescroller
 
         }
 
-
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
             //FrameCount stops Counting if Collied
@@ -96,8 +95,6 @@ namespace Dino_Sidescroller
             Invalidate();
 
         }
-
-
 
         private void Key_Up(object sender, KeyEventArgs e)
         {
