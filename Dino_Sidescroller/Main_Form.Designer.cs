@@ -38,6 +38,8 @@
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Main_Form";
             this.Text = "Dino Sidescroller";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Key_Down);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Mouse_Click);
             this.ResumeLayout(false);
 
         }

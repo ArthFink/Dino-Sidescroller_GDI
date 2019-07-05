@@ -118,25 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="BaseLine" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\200-offline-sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Cacti_Imges" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\100-offline-sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clound" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clound.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Dinoanimation" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Dinoanimation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_100_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\100-disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="GameOverSceen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GameOverSceen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_100_error_offline" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\100-error-offline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_100_offline_sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\100-offline-sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_200_disabled" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\200-disabled.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_200_error_offline" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\200-error-offline.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="_200_offline_sprite" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\200-offline-sprite.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="LargCacti" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LargCacti.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
