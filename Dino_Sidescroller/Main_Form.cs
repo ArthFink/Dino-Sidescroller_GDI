@@ -34,9 +34,9 @@ namespace Dino_Sidescroller
              timer.Interval = 40;
              timer.Start();*/
 
-            KeyUp += key_Up;
+            KeyUp += Key_Up;
 
-            KeyDown += new KeyEventHandler(Key_Press);
+            //KeyDown += new KeyEventHandler(Key_Press);
 
             font = new Font("Symbol", 18, FontStyle.Bold);
         }
@@ -49,17 +49,17 @@ namespace Dino_Sidescroller
             // Get the graphics object.        
             Graphics graphics = e.Graphics;
 
-
+            //Score
             graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
-            //graphics_Paint.Paint_Environment(graphics, ClientSize);
-
-            graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
-            graphics_Paint.CactiAnimation(graphics, ClientSize);
+            //graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
+            // graphics_Paint.CactiAnimation(graphics, ClientSize);
             graphics_Paint.BaseLine(graphics, ClientSize);
 
-            //  graphics_Paint.DinoAnimation(graphics, ClientSize);
+            graphics_Paint.DinoAnimation(graphics, ClientSize);
 
+            graphics_Paint.Paint_Character(graphics, ClientSize);
+            //graphics_Paint.Paint_Environment(graphics, ClientSize);
 
         }
 
@@ -72,6 +72,13 @@ namespace Dino_Sidescroller
             game_Logic.Rectangles.FrameCount = frameCount;
 
             game_Logic.Update();
+
+            if(game_Logic.Charakter.MaxHeightReached())
+            {
+                game_Logic.Charakter.Space = false;
+                game_Logic.Charakter.Jump = true;
+            }
+
 
             Invalidate();
 
@@ -90,7 +97,7 @@ namespace Dino_Sidescroller
         /// <summary>
         ///Detects If key is Preset
         /// </summary>
-        private void Key_Press(object sender, KeyEventArgs e)
+        /*private void Key_Press(object sender, KeyEventArgs e)
         {
             if (game_Logic.Charakter.Rect.Y == game_Logic.Charakter.BaseHight)
             {
@@ -102,17 +109,44 @@ namespace Dino_Sidescroller
             }
 
 
-        }
+        }*/
 
-        private void key_Up(object sender, KeyEventArgs e)
+        private void Key_Up(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
+            #region rt
+            /* if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
+             {
+                 game_Logic.Charakter.KeyPresedUp = false;
+             }*/
+            #endregion
+            if (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
             {
-                game_Logic.Charakter.KeyPresedUp = false;
+                game_Logic.Charakter.Space = false;
+                game_Logic.Charakter.Jump = true;
             }
+
+            if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
+            {
+                // characterSize = new Size(characterHeight, characterHeight);
+
+                game_Logic.Charakter.JumpVelocitiy = 5;
+
+            }
+
         }
 
+        private void Key_Down(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down || e.KeyCode == Keys.S)
+            {
+                //characterSize = new Size(characterHeight, characterHeight / 2);
 
+                game_Logic.Charakter.JumpVelocitiy = 8;
+            }
+
+            if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up) && !game_Logic.Charakter.Jump && game_Logic.Charakter.Rect.Height > 15)
+                game_Logic.Charakter.Space = true;
+        }
 
         public int FrameCount
         {
