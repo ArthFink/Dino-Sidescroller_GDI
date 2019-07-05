@@ -13,7 +13,7 @@ namespace Dino_Sidescroller
         Rectangles rectangles;
         Charakter charakter;
 
-        int animationIndex, xClound;
+        int animationIndex;
         Image DinoAnimationImage;
         Image CactiAnimationImag;
         Image LargCactiAnimationImag;
@@ -52,7 +52,7 @@ namespace Dino_Sidescroller
 
 
         /// <summary>
-        /// Shows the hitBox If f3 & b is Pressed
+        /// Shows the hitBox If b is Pressed
         /// </summary>
         public void Paint_HitBox(Graphics g, SizeF size, int frameCount)
         {

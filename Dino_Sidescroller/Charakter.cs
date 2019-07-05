@@ -35,35 +35,12 @@ namespace Dino_Sidescroller
 
         public void CharakterJumpFall()
         {
-            #region asdad
-            /* //Jump
-             if (keyPresedUp && jumphight > 0)
-             {
-                 gravati++;
-                 jumphight--;
-
-                 rect.Y -= (int)(jumphight - 0.3*gravati);
-             }
-             //Fall
-             else if (!keyPresedUp && gravati > 0)
-             {
-                 gravati--;
-                 jumphight++;
-
-                 rect.Y += (int)(0.3*gravati - jumphight);
-             }
-
-             if (rect.Y >= baseHight)
-             {
-                 gravati = 0;
-                 jumphight = 19;
-                 keyPresedUp = false;
-                 CharakterReset();
-             }*/
-            #endregion
+            
             XCalculation();
 
             rect.Y = Function(jumphight);
+
+            CharakterReset();
         }
 
 
@@ -81,29 +58,26 @@ namespace Dino_Sidescroller
 
         private void XCalculation()
         {
-            //Wenn nicht gesprungen wird und das rect noch nicht den Boden erreicht hat, soll der Charakter fallen
+           
             if (!space && jumphight < maxjumphight)
                 jumphight += jumpVelocitiy;
-            //Wenn gesprungen wird und die maximale Sprunghöhe noch nicht erreicht wurde
+          
             else if (space && jumphight >= 0)
                 jumphight -= jumpVelocitiy;
 
-            //Wenn der Charakter wieder auf dem Boden gelandet ist
+           
             else if (jumphight == maxjumphight)
             {
                 space = false;
                 jump = false;
             }
 
-            //Es kann zu Berechnungsfehlern kommen, wenn man sich beim Fallen duckt, die dazu führen, dass der Charakter unter den Boden kommt
-            //Das wird hierdurch verhindert
-            if (jumphight > maxjumphight)
-                jumphight = maxjumphight;
+  
         }
 
         public bool MaxHeightReached()
         {
-            //Wenn die maximale Sprunghöhe erreicht wurde, soll das Key UP Event ausgeführt werden
+           
             if (jumphight <= 0)
                 return true;
 
