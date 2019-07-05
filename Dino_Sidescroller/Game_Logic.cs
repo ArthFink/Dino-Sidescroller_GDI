@@ -21,7 +21,7 @@ namespace Dino_Sidescroller
             charakter = new Charakter(clinetSize);
             charakter.CharakterReset();
             rectangles = new Rectangles(clinetSize);
-           // graphics_Paint = new Graphics_Paint();
+
             collision = false;
 
         }
@@ -39,10 +39,7 @@ namespace Dino_Sidescroller
 
         public void CollisionDetectrion()
         {
-
-           /* firstObstical = rectangles.RectanglesFs.Min(x => x.X);
-            RectangleF firstObst = rectangles.RectanglesFs.Find(x => x.X == firstObstical);
-            */
+       
             collision = rectangles.Cacti[0].HitBoxRectangle.IntersectsWith(charakter.Rect);
 
         }
@@ -69,11 +66,12 @@ namespace Dino_Sidescroller
         public void CharJumpFall()
         {
             //if (!collision)
-            //{
+           // {
                 charakter.CharakterJumpFall();
 
             //}
         }
+
 
         #region Properties
 

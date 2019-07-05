@@ -19,6 +19,7 @@ namespace Dino_Sidescroller
         Image GameOverSceenImg;
         Image Base;
         Random generator;
+        Rectangle gameOverHitbox;
 
         float xRect, yRect, x;
 
@@ -73,7 +74,6 @@ namespace Dino_Sidescroller
 
             GraphicsUnit units = GraphicsUnit.Pixel;
 
-            //animationIndex = animationIndex == 2 ? 0 : animationIndex++;
 
             if (animationIndex < 2)
             {
@@ -84,14 +84,14 @@ namespace Dino_Sidescroller
                 animationIndex = 0;
             }
 
-            RectangleF srcRect = new RectangleF(45.0F * animationIndex, 0.0F, 43.0F, 51.0F);
+            Rectangle rectangle = new Rectangle(45 * animationIndex, 0, 43, 51);
 
             charakter.CharakterJumpFall();
 
             float y = charakter.Rect.Y;
             float x = charakter.Rect.X - 10;
 
-            g.DrawImage(DinoAnimationImage, x, y, srcRect, units);
+            g.DrawImage(DinoAnimationImage, x, y, rectangle, units);
         }
 
         public void CactiAnimation(Graphics g, SizeF cSize)
@@ -158,14 +158,28 @@ namespace Dino_Sidescroller
 
             GraphicsUnit units = GraphicsUnit.Pixel;
 
-            RectangleF srcRect = new RectangleF(0.0F, 0.0F, 500.0F, 50.0F);
+           Rectangle srcRect = new Rectangle(0, 0, 500, 50);
 
             float y = (cSize.Height / 2)-70;
             float x = cSize.Width / 2 - 130;
 
             g.DrawImage(GameOverSceenImg, x, y, srcRect, units);
 
+            gameOverHitbox.X = (int)x;
+            gameOverHitbox.Y = (int)y;
+            gameOverHitbox.Width = srcRect.Width;
+            gameOverHitbox.Height = srcRect.Height;
+
         }
+
+       
+
+        public Rectangle GameOverHitbox
+        {
+            get { return  gameOverHitbox; }
+            set {  gameOverHitbox = value; }
+        }
+
 
 
     }

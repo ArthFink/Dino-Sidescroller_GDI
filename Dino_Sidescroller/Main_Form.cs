@@ -11,7 +11,7 @@ namespace Dino_Sidescroller
         Game_Logic game_Logic;
         private int frameCount;
         private Font font;
-
+        int score;
 
         public Main_Form()
         {
@@ -28,7 +28,7 @@ namespace Dino_Sidescroller
             timer.Interval = 17;
             timer.Start();
             frameCount = 1;
-
+            score = frameCount;
             /* dinoTimer = new Timer();
              timer.Tick += new EventHandler(DinoTimerEventProcessor);
              timer.Interval = 40;
@@ -52,13 +52,6 @@ namespace Dino_Sidescroller
             //Score
             graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
-            graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
-            graphics_Paint.CactiAnimation(graphics, ClientSize);
-
-            graphics_Paint.DinoAnimation(graphics, ClientSize);
-
-            graphics_Paint.Paint_Character(graphics, ClientSize);
-
             graphics_Paint.BaseLine(graphics, ClientSize, !game_Logic.Collision);
 
             if (game_Logic.Collision)
@@ -68,6 +61,15 @@ namespace Dino_Sidescroller
                 //Score
                 graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
             }
+            else
+            {
+
+                graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
+                graphics_Paint.CactiAnimation(graphics, ClientSize);
+                graphics_Paint.DinoAnimation(graphics, ClientSize);
+                graphics_Paint.Paint_Character(graphics, ClientSize);
+
+            }
 
             //graphics_Paint.Paint_Environment(graphics, ClientSize);
 
@@ -76,8 +78,13 @@ namespace Dino_Sidescroller
 
         private void TimerEventProcessor(Object myObject, EventArgs myEventArgs)
         {
-            //the timer starts and increments the counter.
-            frameCount += 1;
+            //FrameCount stops Counting if Collied
+            if (!game_Logic.Collision)
+            {
+                //the timer starts and increments the counter.
+                frameCount += 1;
+            }
+
 
             game_Logic.Rectangles.FrameCount = frameCount;
 
@@ -104,31 +111,9 @@ namespace Dino_Sidescroller
 
 
 
-        /// <summary>
-        ///Detects If key is Preset
-        /// </summary>
-        /*private void Key_Press(object sender, KeyEventArgs e)
-        {
-            if (game_Logic.Charakter.Rect.Y == game_Logic.Charakter.BaseHight)
-            {
-
-                if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
-                {
-                    game_Logic.Charakter.KeyPresedUp = true;
-                }
-            }
-
-
-        }*/
-
         private void Key_Up(object sender, KeyEventArgs e)
         {
-            #region rt
-            /* if (e.KeyCode == Keys.Space || e.KeyCode == Keys.Up)
-             {
-                 game_Logic.Charakter.KeyPresedUp = false;
-             }*/
-            #endregion
+
             if (e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up)
             {
                 game_Logic.Charakter.Space = false;
@@ -156,6 +141,27 @@ namespace Dino_Sidescroller
 
             if ((e.KeyCode == Keys.Space || e.KeyCode == Keys.W || e.KeyCode == Keys.Up) && !game_Logic.Charakter.Jump && game_Logic.Charakter.Rect.Height > 15)
                 game_Logic.Charakter.Space = true;
+        }
+
+        private void Mouse_Click(object sender, MouseEventArgs e)
+        {
+            int x = e.X;
+            int y = e.Y;
+            bool b = false;
+
+
+
+            b = graphics_Paint.GameOverHitbox.Contains(x, y);
+
+            if (b)
+            {
+                
+                new Main_Form().ShowDialog();
+                Close();
+            }
+
+
+
         }
 
         public int FrameCount
