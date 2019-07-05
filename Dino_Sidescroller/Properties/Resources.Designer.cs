@@ -93,6 +93,16 @@ namespace Dino_Sidescroller.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap GameOverSceen {
+            get {
+                object obj = ResourceManager.GetObject("GameOverSceen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap LargCacti {
             get {
                 object obj = ResourceManager.GetObject("LargCacti", resourceCulture);

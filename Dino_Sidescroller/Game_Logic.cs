@@ -22,20 +22,60 @@ namespace Dino_Sidescroller
             charakter.CharakterReset();
             rectangles = new Rectangles(clinetSize);
            // graphics_Paint = new Graphics_Paint();
-            bool collision = false;
+            collision = false;
 
+        }
+
+      
+
+        public void Update()
+        {
+
+            CollisionDetectrion();
+            ObstacelsMove();
+            CharJumpFall();
+       
+        }
+
+        public void CollisionDetectrion()
+        {
+
+           /* firstObstical = rectangles.RectanglesFs.Min(x => x.X);
+            RectangleF firstObst = rectangles.RectanglesFs.Find(x => x.X == firstObstical);
+            */
+            collision = rectangles.Cacti[0].HitBoxRectangle.IntersectsWith(charakter.Rect);
+
+        }
+
+        public void RectangelsGenarate()
+        {
+            if (!collision)
+            {
+                rectangles.GenerateObstacelsArry();
+
+            }
+        }
+
+        public void ObstacelsMove()
+        {
+            if (!collision)
+            {
+                rectangles.MoveObstecals();
+            }
+
+
+        }
+
+        public void CharJumpFall()
+        {
+            //if (!collision)
+            //{
+                charakter.CharakterJumpFall();
+
+            //}
         }
 
         #region Properties
-
-
-        public bool Collision
-        {
-            get { return collision; }
-            set { collision = value; }
-        }
-
-
 
 
         private RectangleF obstacles;
@@ -69,55 +109,12 @@ namespace Dino_Sidescroller
             set { firstObstical = value; }
         }
 
+        public bool Collision
+        {
+            get { return collision; }
+            set { collision = value; }
+        }
         #endregion
-
-        public void Update()
-        {
-
-            CollisionDetectrion();
-            ObstacelsMove();
-            CharJumpFall();
-       
-        }
-
-        public void CollisionDetectrion()
-        {
-
-           /* firstObstical = rectangles.RectanglesFs.Min(x => x.X);
-            RectangleF firstObst = rectangles.RectanglesFs.Find(x => x.X == firstObstical);
-            */
-            Collision = rectangles.Cacti[0].HitBoxRectangle.IntersectsWith(charakter.Rect);
-
-        }
-
-        public void RectangelsGenarate()
-        {
-            if (!collision)
-            {
-                rectangles.GenerateObstacelsArry();
-
-            }
-        }
-
-        public void ObstacelsMove()
-        {
-            if (!collision)
-            {
-                rectangles.MoveObstecals();
-            }
-
-
-        }
-
-        public void CharJumpFall()
-        {
-            //if (!collision)
-            //{
-                charakter.CharakterJumpFall();
-
-            //}
-        }
-
 
     }
 }

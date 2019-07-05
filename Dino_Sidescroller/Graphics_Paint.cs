@@ -16,6 +16,7 @@ namespace Dino_Sidescroller
         Image DinoAnimationImage;
         Image CactiAnimationImag;
         Image LargCactiAnimationImag;
+        Image GameOverSceenImg;
         Image Base;
         Random generator;
 
@@ -29,6 +30,7 @@ namespace Dino_Sidescroller
             DinoAnimationImage = Properties.Resources.Dinoanimation;
             CactiAnimationImag = Properties.Resources.Cacti_Imges;
             LargCactiAnimationImag = Properties.Resources.LargCacti;
+            GameOverSceenImg = Properties.Resources.GameOverSceen;
             this.Base = Properties.Resources.BaseLine;
 
             animationIndex = 0;
@@ -127,24 +129,41 @@ namespace Dino_Sidescroller
             }
 
         }
-        public void BaseLine(Graphics g, SizeF cSize)
+        public void BaseLine(Graphics g, SizeF cSize, bool move)
         {
 
             GraphicsUnit units = GraphicsUnit.Pixel;
 
             RectangleF srcRect = new RectangleF(2.0F, 5.0F, 2408.0F, 30.0F);
 
-            
-            x -= 4 + (rectangles.FrameCount/500);
-            if (x <= -Base.Width +1200)
+            if (move)
             {
-                x = 0;
+                x -= 4 + (rectangles.FrameCount / 500);
+                if (x <= -Base.Width + 1200)
+                {
+                    x = 0;
+                }
             }
+
 
             float y = 2 * (cSize.Height / 3) - 7;
 
 
             g.DrawImage(Base, x, y, srcRect, units);
+
+        }
+
+        public void GameOver(Graphics g, SizeF cSize)
+        {
+
+            GraphicsUnit units = GraphicsUnit.Pixel;
+
+            RectangleF srcRect = new RectangleF(0.0F, 0.0F, 500.0F, 50.0F);
+
+            float y = (cSize.Height / 2)-70;
+            float x = cSize.Width / 2 - 130;
+
+            g.DrawImage(GameOverSceenImg, x, y, srcRect, units);
 
         }
 

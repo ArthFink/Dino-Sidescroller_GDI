@@ -52,13 +52,23 @@ namespace Dino_Sidescroller
             //Score
             graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
 
-            //graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
-            // graphics_Paint.CactiAnimation(graphics, ClientSize);
-            graphics_Paint.BaseLine(graphics, ClientSize);
+            graphics_Paint.Paint_Obstacles(graphics, ClientSize, frameCount);
+            graphics_Paint.CactiAnimation(graphics, ClientSize);
 
             graphics_Paint.DinoAnimation(graphics, ClientSize);
 
             graphics_Paint.Paint_Character(graphics, ClientSize);
+
+            graphics_Paint.BaseLine(graphics, ClientSize, !game_Logic.Collision);
+
+            if (game_Logic.Collision)
+            {
+
+                graphics_Paint.GameOver(graphics, ClientSize);
+                //Score
+                graphics.DrawString((frameCount / 10).ToString(), font, Brushes.Black, (ClientSize.Width / 10) * 9, 10);
+            }
+
             //graphics_Paint.Paint_Environment(graphics, ClientSize);
 
         }
@@ -73,7 +83,7 @@ namespace Dino_Sidescroller
 
             game_Logic.Update();
 
-            if(game_Logic.Charakter.MaxHeightReached())
+            if (game_Logic.Charakter.MaxHeightReached())
             {
                 game_Logic.Charakter.Space = false;
                 game_Logic.Charakter.Jump = true;
